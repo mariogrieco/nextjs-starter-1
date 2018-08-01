@@ -4,19 +4,31 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@zeit/next-css": "^0.2.0",
+    "bootstrap": "^4.1.1",
     "express": "^4.16.3",
     "next": "^6.1.1",
+    "prettier": "^1.14.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
+    "reactstrap": "^6.3.1",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "husky": "^1.0.0-rc.13",
+    "pretty-quick": "^1.6.0"
+  },
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,10 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import { Button } from "reactstrap";
 
 export default () => (
   <div>
-    Hello
+    <Button color="primary" type="submit">
+      Save Changes
+    </Button>
   </div>
-)
+);
