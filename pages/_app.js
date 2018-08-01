@@ -1,5 +1,6 @@
 import React from "react";
 import App, { Container } from "next/app";
+import { Provider } from "react-redux";
 
 import withReduxSaga from "../src/lib/withReduxSaga";
 
@@ -17,10 +18,12 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, store } = this.props;
     return (
       <Container>
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </Container>
     );
   }
