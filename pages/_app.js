@@ -1,9 +1,11 @@
-import App, { Container } from "next/app";
 import React from "react";
+import App, { Container } from "next/app";
+
+import withReduxSaga from "../src/lib/withReduxSaga";
 
 import "bootstrap/dist/css/bootstrap.css";
 
-export default class MyApp extends App {
+class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
@@ -23,3 +25,5 @@ export default class MyApp extends App {
     );
   }
 }
+
+export default withReduxSaga(MyApp);
