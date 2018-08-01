@@ -21,9 +21,9 @@
     "pretty-quick": "^1.6.0"
   },
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node ./src/server",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node ./src/server.js"
   },
   "husky": {
     "hooks": {
