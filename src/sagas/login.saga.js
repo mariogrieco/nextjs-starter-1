@@ -3,6 +3,7 @@ import "isomorphic-unfetch";
 
 import { login } from "../actions/login.action";
 import { loginSuccess } from "../actions/user.action";
+import { changeRoute } from "../actions/route.action";
 
 function* loginSaga({ payload }) {
   try {
@@ -25,6 +26,8 @@ function* loginSaga({ payload }) {
         email
       })
     );
+
+    yield put(changeRoute("/"));
   } catch (error) {
     yield console.log("error", error);
   }

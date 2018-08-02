@@ -12,7 +12,7 @@ router.post("/signup", async (req, res) => {
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
-    res.status(500).send({ error: "email already exists" });
+    return res.status(500).send({ error: "email already exists" });
   } else {
     try {
       const user = new User({
@@ -34,12 +34,12 @@ router.post("/signup", async (req, res) => {
       );
 
       req.session.userToken = token;
-      res.json({
+      return res.json({
         _id: user._id,
         email: user.email
       });
     } catch (error) {
-      res.status(500).send({ error: "signup: something blew up" });
+      return res.status(500).send({ error: "signup: something blew up" });
     }
   }
 });
@@ -50,11 +50,11 @@ router.post("/login", async (req, res) => {
   const user = await User.findOne({ email });
 
   try {
-    if (!user) res.status(500).send({ error: "User not found" });
+    if (!user) return res.status(500).send({ error: "User not found" });
 
     const valid = await bcrypt.compare(password, user.password);
 
-    if (!valid) res.status(500).send({ error: "Invalid password" });
+    if (!valid) return res.status(500).send({ error: "Invalid password" });
 
     const token = jwt.sign(
       {
@@ -68,12 +68,12 @@ router.post("/login", async (req, res) => {
     );
 
     req.session.userToken = token;
-    res.json({
+    return res.json({
       _id: user._id,
       email: user.email
     });
   } catch (error) {
-    res.status(500).send({ error: "login: something blew up" });
+    return res.status(500).send({ error: "login: something blew up" });
   }
 });
 
@@ -89,14 +89,13 @@ router.post("/isLoggedIn", async (req, res) => {
     } = req.body;
     if (userToken) {
       const { _id, email } = jwt.verify(userToken, "secret");
-      res.json({ isLoggedIn: true, user: { _id, email } });
+      return res.json({ isLoggedIn: true, user: { _id, email } });
     } else {
-      res.json({ isLoggedIn: false });
+      return res.json({ isLoggedIn: false });
     }
   } catch (error) {
-    res.json({ isLoggedIn: false });
+    return res.json({ isLoggedIn: false });
   }
-  res.end();
 });
 
 module.exports = router;
