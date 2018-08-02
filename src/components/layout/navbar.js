@@ -33,18 +33,24 @@ class NavigationBar extends Component {
           <NavbarBrand href="/">Business Listing</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Link route="login">
-                  <NavLink>Log In</NavLink>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link route="signup">
-                  <NavLink>Sign Up</NavLink>
-                </Link>
-              </NavItem>
-            </Nav>
+            {this.props.isLoggedIn ? (
+              <Nav className="ml-auto" navbar>
+                <NavLink onClick={this.props.signout}>Sign out</NavLink>
+              </Nav>
+            ) : (
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <Link route="login">
+                    <NavLink>Log In</NavLink>
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link route="signup">
+                    <NavLink>Sign Up</NavLink>
+                  </Link>
+                </NavItem>
+              </Nav>
+            )}
           </Collapse>
         </Navbar>
       </Fragment>

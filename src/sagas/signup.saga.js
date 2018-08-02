@@ -1,9 +1,10 @@
-import { takeLatest, call } from "redux-saga/effects";
+import { takeLatest, call, put } from "redux-saga/effects";
 import "isomorphic-unfetch";
 
 import { signup } from "../actions/signup.action";
+import { loginSuccess } from "../actions/user.action";
 
-function* signupSaga({ payload: { email, password } }) {
+function* signupSaga({ payload }) {
   try {
     const res = yield call(fetch, "/signup", {
       method: "POST",
@@ -12,12 +13,18 @@ function* signupSaga({ payload: { email, password } }) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email,
-        password
+        email: payload.email,
+        password: payload.password
       })
     });
-    const data = yield res.json();
-    yield console.log("data", data);
+    const { _id, email } = yield res.json();
+
+    yield put(
+      loginSuccess({
+        _id,
+        email
+      })
+    );
   } catch (error) {
     yield console.log("error", error);
   }

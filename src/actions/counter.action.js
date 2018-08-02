@@ -1,4 +1,4 @@
-import { createActions, handleActions, combineActions } from "redux-actions";
+import { createActions } from "redux-actions";
 
 const { increment, decrement } = createActions({
   INCREMENT: (amount = 1) => ({ amount }),

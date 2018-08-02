@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Container } from "reactstrap";
 
-import Navbar from "./navbar";
+import Navbar from "../../containers/navbar.container";
 
 const Layout = ({ children }) => (
   <Fragment>

@@ -39,4 +39,9 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+router.post("/signout", async (req, res) => {
+  req.session.userToken = null;
+  res.end();
+});
+
 module.exports = router;
