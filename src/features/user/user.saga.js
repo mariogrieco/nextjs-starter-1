@@ -1,11 +1,7 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import "isomorphic-unfetch";
 
-import {
-  isLoggedIn,
-  loginSuccess,
-  signoutSuccess
-} from "../actions/user.action";
+import { isLoggedIn, loginSuccess, signoutSuccess } from "./user.action";
 
 function* isLoggedInSaga({ payload }) {
   try {

@@ -1,6 +1,6 @@
-import { handleActions, combineActions } from "redux-actions";
+import { handleActions } from "redux-actions";
 
-import { loginSuccess, signoutSuccess } from "../actions/user.action";
+import { loginSuccess, signoutSuccess } from "./user.action";
 
 const defaultState = { _id: undefined, email: undefined };
 

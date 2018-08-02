@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Table, Button } from "reactstrap";
 
-import AlignRight from "../styled/alignRight";
+import AlignRight from "../../styled/alignRight";
 
-import { Router } from "../routes";
+import { Router } from "../../routes";
 
 class Businesses extends Component {
   handleClick() {

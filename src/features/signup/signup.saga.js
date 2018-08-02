@@ -1,9 +1,9 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import "isomorphic-unfetch";
 
-import { signup } from "../actions/signup.action";
-import { loginSuccess } from "../actions/user.action";
-import { changeRoute } from "../actions/route.action";
+import { signup } from "./signup.action";
+import { loginSuccess } from "../user/user.action";
+import { changeRoute } from "../route/route.action";
 
 function* signupSaga({ payload }) {
   try {

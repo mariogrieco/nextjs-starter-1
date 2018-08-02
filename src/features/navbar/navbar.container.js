@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 
-import Navbar from "../components/layout/navbar";
+import Navbar from "./navbar.component";
 
-import { isLoggedIn } from "../selectors/user.selector";
-import { signout } from "../actions/signout.action";
+import { isLoggedIn } from "../user/user.selector";
+import { signout } from "../signout/signout.action";
 
 const mapStateToProps = state => ({
   isLoggedIn: isLoggedIn(state)

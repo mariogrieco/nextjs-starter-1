@@ -1,8 +1,7 @@
 import React from "react";
 
-import Businesses from "../src/containers/businesses.container";
-
-import { getBusinesses } from "../src/actions/business.action";
+import Businesses from "../src/features/businesses/businesses.container";
+import { getBusinesses } from "../src/features/businesses/businesses.action";
 
 const BusinessesPage = () => <Businesses />;
 

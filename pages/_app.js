@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import withReduxSaga from "../src/lib/withReduxSaga";
 
 import Layout from "../src/components/layout";
-import { isLoggedIn } from "../src/actions/user.action";
+import { isLoggedIn } from "../src/features/user/user.action";
 
 import "bootstrap/dist/css/bootstrap.css";
 

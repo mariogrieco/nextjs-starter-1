@@ -1,7 +1,7 @@
 import React from "react";
 
-import BusinessCreate from "../../src/containers/business/create.container";
+import CreateBusiness from "../../src/features/createBusiness/createBusiness.container";
 
-const BusinessCreatePage = () => <BusinessCreate />;
+const CreateBusinessPage = () => <CreateBusiness />;
 
-export default BusinessCreatePage;
+export default CreateBusinessPage;

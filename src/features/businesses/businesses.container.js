@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import Businesses from "../components/businesses.component";
-import { getBusinesses } from "../selectors/business.selector";
+import Businesses from "./businesses.component";
+import { getBusinesses } from "./businesses.selector";
 
 const mapStateToProps = state => ({
   businesses: getBusinesses(state)

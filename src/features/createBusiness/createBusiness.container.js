@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import BusinessCreate from "../../components/business/create.component";
-import { createBusiness } from "../../actions/business.action";
+import CreateBusiness from "./createBusiness.component";
+import { createBusiness } from "./createBusiness.action";
 
 const mapStateToProps = state => ({});
 
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(BusinessCreate);
+)(CreateBusiness);

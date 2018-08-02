@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-import user from "./user.reducer";
-import business from "./business.reducer";
+import user from "../features/user/user.reducer";
+import business from "../features/business/business.reducer";
 
 export default combineReducers({
   user,

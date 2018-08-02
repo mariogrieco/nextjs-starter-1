@@ -1,6 +1,6 @@
 import React from "react";
 
-import Signup from "../src/containers/signup.container";
+import Signup from "../src/features/signup/signup.container";
 
 const SignupPage = () => <Signup />;
 

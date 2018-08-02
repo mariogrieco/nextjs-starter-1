@@ -1,9 +1,9 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import "isomorphic-unfetch";
 
-import { signout } from "../actions/signout.action";
-import { signoutSuccess } from "../actions/user.action";
-import { changeRoute } from "../actions/route.action";
+import { signout } from "../signout/signout.action";
+import { signoutSuccess } from "../user/user.action";
+import { changeRoute } from "../route/route.action";
 
 function* signoutSaga() {
   try {

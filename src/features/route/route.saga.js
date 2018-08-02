@@ -1,7 +1,7 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 
-import { Router } from "../routes";
-import { changeRoute } from "../actions/route.action";
+import { Router } from "../../routes";
+import { changeRoute } from "./route.action";
 
 function* rotueSaga({ payload }) {
   try {
