@@ -24,7 +24,8 @@ router.post("/signup", async (req, res) => {
 
       const token = jwt.sign(
         {
-          userId: user._id
+          _id: user._id,
+          email: user.email
         },
         "secret",
         {
@@ -33,9 +34,12 @@ router.post("/signup", async (req, res) => {
       );
 
       req.session.userToken = token;
-      res.json(user);
+      res.json({
+        _id: user._id,
+        email: user.email
+      });
     } catch (error) {
-      res.status(500).send({ error: "something blew up" });
+      res.status(500).send({ error: "signup: something blew up" });
     }
   }
 });
@@ -54,7 +58,8 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign(
       {
-        userId: user._id
+        _id: user._id,
+        email: user.email
       },
       "secret",
       {
@@ -63,14 +68,34 @@ router.post("/login", async (req, res) => {
     );
 
     req.session.userToken = token;
-    res.json(user);
+    res.json({
+      _id: user._id,
+      email: user.email
+    });
   } catch (error) {
-    res.status(500).send({ error: "something blew up" });
+    res.status(500).send({ error: "login: something blew up" });
   }
 });
 
 router.post("/signout", async (req, res) => {
   req.session.userToken = null;
+  res.end();
+});
+
+router.post("/isLoggedIn", async (req, res) => {
+  try {
+    const {
+      session: { userToken }
+    } = req.body;
+    if (userToken) {
+      const { _id, email } = jwt.verify(userToken, "secret");
+      res.json({ isLoggedIn: true, user: { _id, email } });
+    } else {
+      res.json({ isLoggedIn: false });
+    }
+  } catch (error) {
+    res.json({ isLoggedIn: false });
+  }
   res.end();
 });
 
