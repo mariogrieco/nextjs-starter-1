@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 
 import withReduxSaga from "../src/lib/withReduxSaga";
 
+import Layout from "../src/components/layout";
+
 import "bootstrap/dist/css/bootstrap.css";
 
 class MyApp extends App {
@@ -22,7 +24,9 @@ class MyApp extends App {
     return (
       <Container>
         <Provider store={store}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </Provider>
       </Container>
     );
