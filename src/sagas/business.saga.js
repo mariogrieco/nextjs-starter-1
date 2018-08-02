@@ -8,7 +8,7 @@ import { changeRoute } from "../actions/route.action";
 
 function* createBusinessSaga({ payload }) {
   try {
-    const res = yield call(fetch, "/bussiness/create", {
+    const res = yield call(fetch, "/business/create", {
       method: "POST",
       credentials: "same-origin",
       headers: {

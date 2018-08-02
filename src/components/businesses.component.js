@@ -11,6 +11,7 @@ class Businesses extends Component {
   }
 
   render() {
+    console.log("this.props", this.props);
     return (
       <div>
         <AlignRight>
@@ -22,30 +23,18 @@ class Businesses extends Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Name</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {this.props.businesses.map((business, index) => (
+              <tr key={business._id}>
+                <th scope="row">{index + 1}</th>
+                <td>{business.name}</td>
+                <td>{business.description}</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>

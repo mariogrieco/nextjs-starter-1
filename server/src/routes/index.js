@@ -1,7 +1,7 @@
 const rootRouter = require("./root");
-const bussinessRouter = require("./bussiness");
+const businessRouter = require("./business");
 
 module.exports = server => {
   server.use("/", rootRouter);
-  server.use("/bussiness", bussinessRouter);
+  server.use("/business", businessRouter);
 };
