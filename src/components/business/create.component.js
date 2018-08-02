@@ -12,6 +12,18 @@ const EmptySpace = styled.div`
 `;
 
 class BusinessCreate extends Component {
+  state = {
+    name: undefined,
+    description: undefined
+  };
+
+  handleNameChange = e => this.setState({ name: e.target.value });
+  handleDescriptionChange = e => this.setState({ description: e.target.value });
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.createBusiness(this.state);
+  };
+
   handleCancel() {
     Router.pushRoute("businesses");
   }
@@ -22,17 +34,19 @@ class BusinessCreate extends Component {
         <PageTitle>Create A Business</PageTitle>
         <Form>
           <FormGroup>
-            <Label for="exampleEmail">Name</Label>
-            <Input placeholder="Name" />
+            <Label>Name</Label>
+            <Input placeholder="Name" onChange={this.handleNameChange} />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleText">Description</Label>
-            <Input type="textarea" name="text" id="exampleText" />
+            <Label>Description</Label>
+            <Input type="textarea" onChange={this.handleDescriptionChange} />
           </FormGroup>
           <AlignRight>
             <Button onClick={this.handleCancel}>Cancel</Button>
             <EmptySpace />
-            <Button color="success">Submit</Button>
+            <Button color="success" onClick={this.handleSubmit}>
+              Submit
+            </Button>
           </AlignRight>
         </Form>
       </div>
