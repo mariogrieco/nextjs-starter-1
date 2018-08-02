@@ -1,5 +1,9 @@
 # Next.js Starter Project
 
+[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 This is a starter project for React that uses Next.js.
 
 It includes the following features:
@@ -35,3 +39,15 @@ yarn start
 ```
 
 You should run `yarn build` again any time you make changes to the site.
+
+## Stacks
+
+- [x] [Next.js](https://github.com/zeit/next.js/)
+- [x] [Bootstrap](https://getbootstrap.com/)
+- [x] [Redux](https://redux.js.org/)
+- [x] [Redux Saga](https://github.com/redux-saga/redux-saga)
+- [x] [Express](https://github.com/expressjs/express)
+- [x] [styled-components](https://github.com/styled-components/styled-components)
+- [x] [JWT](https://jwt.io/)
+- [x] [MongoDB](https://www.mongodb.com/)
+- [x] [Docker](https://www.docker.com/)
