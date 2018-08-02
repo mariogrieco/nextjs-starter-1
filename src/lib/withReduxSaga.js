@@ -22,5 +22,7 @@ export function configureStore(initialState = {}) {
 }
 
 export default function(BaseComponent) {
-  return nextReduxWrapper(configureStore)(nextReduxSaga(BaseComponent));
+  return nextReduxWrapper(configureStore)(
+    nextReduxSaga({ async: true })(BaseComponent)
+  );
 }
