@@ -10,7 +10,7 @@ import { isLoggedIn } from "../src/actions/user.action";
 import "bootstrap/dist/css/bootstrap.css";
 
 class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {

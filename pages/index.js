@@ -1,3 +1,5 @@
 import React from "react";
 
-export default () => <div>Hello World</div>;
+import { Link } from "../src/routes";
+
+export default () => <Link route="businesses">Bussiness</Link>;

@@ -8,7 +8,7 @@ import route from "./route.saga";
 import business from "./business.saga";
 
 function* rootSaga() {
-  yield all([signup, signout, login, user, route, business]);
+  yield all([signup, signout, login, user, route, business()]);
 }
 
 export default rootSaga;

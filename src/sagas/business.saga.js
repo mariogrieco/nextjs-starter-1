@@ -1,8 +1,10 @@
-import { takeLatest, call, put } from "redux-saga/effects";
+import { all, takeLatest, call, put } from "redux-saga/effects";
 
 import {
   createBusiness,
-  createBusinessSuccess
+  createBusinessSuccess,
+  getBusinesses,
+  getBusinessesSuccess
 } from "../actions/business.action";
 import { changeRoute } from "../actions/route.action";
 
@@ -35,4 +37,33 @@ function* createBusinessSaga({ payload }) {
   }
 }
 
-export default takeLatest(createBusiness().type, createBusinessSaga);
+function* getBusinessesSaga() {
+  try {
+    const res = yield call(
+      fetch,
+      "http://localhost:3000/business/getBusinesses",
+      {
+        credentials: "same-origin"
+      }
+    );
+    const { businesses } = yield res.json();
+
+    yield put(getBusinessesSuccess({ businesses }));
+  } catch (error) {
+    yield console.log("error", error);
+  }
+}
+
+function* watchCreateBusiness() {
+  yield takeLatest(createBusiness().type, createBusinessSaga);
+}
+
+function* watchGetBusinesses() {
+  yield takeLatest(getBusinesses().type, getBusinessesSaga);
+}
+
+function* businessSaga() {
+  yield all([watchCreateBusiness(), watchGetBusinesses()]);
+}
+
+export default businessSaga;

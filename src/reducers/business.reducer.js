@@ -1,6 +1,9 @@
 import { handleActions, combineActions } from "redux-actions";
 
-import { createBusinessSuccess } from "../actions/business.action";
+import {
+  createBusinessSuccess,
+  getBusinessesSuccess
+} from "../actions/business.action";
 
 const defaultState = [];
 
@@ -18,6 +21,9 @@ const reducer = handleActions(
           description
         }
       ];
+    },
+    [getBusinessesSuccess]: (state, { payload: { businesses } }) => {
+      return [...businesses];
     }
   },
   defaultState

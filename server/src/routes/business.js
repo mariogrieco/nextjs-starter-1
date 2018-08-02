@@ -24,4 +24,15 @@ router.post("/create", async (req, res) => {
   }
 });
 
+router.get("/getBusinesses", async (req, res) => {
+  try {
+    const businesses = await Business.find();
+    return res.json({
+      businesses
+    });
+  } catch (error) {
+    return res.status(500).send({ error: "create: something blew up" });
+  }
+});
+
 module.exports = router;

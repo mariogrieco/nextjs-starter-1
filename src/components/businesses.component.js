@@ -7,11 +7,10 @@ import { Router } from "../routes";
 
 class Businesses extends Component {
   handleClick() {
-    Router.pushRoute("businessCreate");
+    Router.pushRoute("business/create");
   }
 
   render() {
-    console.log("this.props", this.props);
     return (
       <div>
         <AlignRight>

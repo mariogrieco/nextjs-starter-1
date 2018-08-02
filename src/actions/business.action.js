@@ -1,6 +1,11 @@
 import { createActions } from "redux-actions";
 
-const { createBusiness, createBusinessSuccess } = createActions({
+const {
+  createBusiness,
+  createBusinessSuccess,
+  getBusinesses,
+  getBusinessesSuccess
+} = createActions({
   CREATE_BUSINESS: ({ name, description } = {}) => ({
     name,
     description
@@ -9,7 +14,14 @@ const { createBusiness, createBusinessSuccess } = createActions({
     _id,
     name,
     description
-  })
+  }),
+  GET_BUSINESSES: () => ({}),
+  GET_BUSINESSES_SUCCESS: ({ businesses } = {}) => ({ businesses })
 });
 
-export { createBusiness, createBusinessSuccess };
+export {
+  createBusiness,
+  createBusinessSuccess,
+  getBusinesses,
+  getBusinessesSuccess
+};

@@ -4,4 +4,4 @@ module.exports = routes()
   .add("login")
   .add("signup")
   .add("businesses")
-  .add("businessCreate", "business/create");
+  .add("business/create");
