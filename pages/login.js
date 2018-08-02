@@ -1,5 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 
-const LogInPage = () => <div>Log In</div>;
+import Login from "../src/containers/login.container";
+
+const LogInPage = () => <Login />;
 
 export default LogInPage;
