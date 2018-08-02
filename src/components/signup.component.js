@@ -19,6 +19,11 @@ class Signup extends Component {
 
   handleEmailChange = e => this.setState({ email: e.target.value });
   handlePasswordChange = e => this.setState({ password: e.target.value });
+  handleSignup = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    this.props.signup(email, password);
+  };
 
   render() {
     return (
@@ -44,7 +49,7 @@ class Signup extends Component {
                     onChange={this.handlePasswordChange}
                   />
                 </FormGroup>
-                <Button>Submit</Button>
+                <Button onClick={this.handleSignup}>Submit</Button>
               </Form>
             </CardBody>
           </Card>
