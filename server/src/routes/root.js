@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
@@ -36,6 +37,35 @@ router.post("/signup", async (req, res) => {
     } catch (error) {
       res.status(500).send({ error: "something blew up" });
     }
+  }
+});
+
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  try {
+    if (!user) res.status(500).send({ error: "User not found" });
+
+    const valid = await bcrypt.compare(password, user.password);
+
+    if (!valid) res.status(500).send({ error: "Invalid password" });
+
+    const token = jwt.sign(
+      {
+        userId: user._id
+      },
+      "secret",
+      {
+        expiresIn: "7d"
+      }
+    );
+
+    req.session.userToken = token;
+    res.json(user);
+  } catch (error) {
+    res.status(500).send({ error: "something blew up" });
   }
 });
 

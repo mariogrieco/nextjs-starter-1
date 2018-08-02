@@ -19,6 +19,11 @@ class Login extends Component {
 
   handleEmailChange = e => this.setState({ email: e.target.value });
   handlePasswordChange = e => this.setState({ password: e.target.value });
+  handleLogin = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    this.props.login(email, password);
+  };
 
   render() {
     return (
@@ -44,7 +49,7 @@ class Login extends Component {
                     onChange={this.handlePasswordChange}
                   />
                 </FormGroup>
-                <Button>Submit</Button>
+                <Button onClick={this.handleLogin}>Submit</Button>
               </Form>
             </CardBody>
           </Card>
