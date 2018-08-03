@@ -31,7 +31,6 @@ server.use(
 app.prepare().then(() => {
   serverRoutes(server);
   server.use(handler);
-
   server.listen(port, err => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);

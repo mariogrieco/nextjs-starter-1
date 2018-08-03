@@ -7,13 +7,9 @@ import {
 
 function* getSingleBusinessSaga({ payload }) {
   try {
-    const res = yield call(
-      fetch,
-      `http://localhost:3000/business/${payload._id}`,
-      {
-        credentials: "same-origin"
-      }
-    );
+    const res = yield call(fetch, `http://localhost:3000/b/${payload._id}`, {
+      credentials: "same-origin"
+    });
     const { business } = yield res.json();
     yield put(getSingleBusinessSuccess({ business }));
   } catch (error) {

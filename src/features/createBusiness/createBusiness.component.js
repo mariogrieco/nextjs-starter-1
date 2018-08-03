@@ -13,8 +13,8 @@ const EmptySpace = styled.div`
 
 class CreateBusiness extends Component {
   state = {
-    name: undefined,
-    description: undefined
+    name: "",
+    description: ""
   };
 
   handleNameChange = e => this.setState({ name: e.target.value });

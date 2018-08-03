@@ -66,4 +66,16 @@ router.post("/update", async (req, res) => {
   }
 });
 
+router.post("/delete", async (req, res) => {
+  const { _id } = req.body;
+  try {
+    await Business.findOneAndDelete({
+      _id
+    });
+    res.end();
+  } catch (error) {
+    return res.status(500).send({ error: "create: something blew up" });
+  }
+});
+
 module.exports = router;

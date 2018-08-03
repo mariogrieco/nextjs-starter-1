@@ -10,6 +10,8 @@ class Businesses extends Component {
     Router.pushRoute("business/create");
   }
 
+  handleDelete = _id => () => this.props.deleteBusiness({ _id });
+
   render() {
     return (
       <div>
@@ -41,6 +43,12 @@ class Businesses extends Component {
                   <Link route="business/update" params={{ _id: business._id }}>
                     <a>Edit</a>
                   </Link>
+                  <Button
+                    color="danger"
+                    onClick={this.handleDelete(business._id)}
+                  >
+                    Delete
+                  </Button>
                 </td>
               </tr>
             ))}
