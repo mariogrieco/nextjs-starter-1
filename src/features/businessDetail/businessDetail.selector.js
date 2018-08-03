@@ -1,4 +1,3 @@
-const getSingleBusiness = (state, _id) =>
-  state.business.find(business => business._id === _id);
+const getBusinessDetail = state => state.businessDetail;
 
-export { getSingleBusiness };
+export { getBusinessDetail };

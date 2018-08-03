@@ -7,6 +7,7 @@ import user from "../features/user/user.saga";
 import route from "../features/route/route.saga";
 import businesses from "../features/businesses/businesses.saga";
 import createBusiness from "../features/createBusiness/createBusiness.saga";
+import businessDetail from "../features/businessDetail/businessDetail.saga";
 
 function* rootSaga() {
   yield all([
@@ -16,7 +17,8 @@ function* rootSaga() {
     user,
     route,
     businesses(),
-    createBusiness
+    createBusiness,
+    businessDetail
   ]);
 }
 

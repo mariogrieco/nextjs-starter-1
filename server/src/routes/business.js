@@ -35,4 +35,17 @@ router.get("/getBusinesses", async (req, res) => {
   }
 });
 
+router.get("/:_id", async (req, res) => {
+  try {
+    const business = await Business.findOne({
+      _id: req.params._id
+    });
+    return res.json({
+      business
+    });
+  } catch (error) {
+    return res.status(500).send({ error: "create: something blew up" });
+  }
+});
+
 module.exports = router;
