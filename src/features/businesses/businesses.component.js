@@ -3,7 +3,7 @@ import { Table, Button } from "reactstrap";
 
 import AlignRight from "../../styled/alignRight";
 
-import { Router } from "../../routes";
+import { Router, Link } from "../../routes";
 
 class Businesses extends Component {
   handleClick() {
@@ -30,7 +30,11 @@ class Businesses extends Component {
             {this.props.businesses.map((business, index) => (
               <tr key={business._id}>
                 <th scope="row">{index + 1}</th>
-                <td>{business.name}</td>
+                <td>
+                  <Link route="business/detail" params={{ _id: business._id }}>
+                    <a>{business.name}</a>
+                  </Link>
+                </td>
                 <td>{business.description}</td>
               </tr>
             ))}
