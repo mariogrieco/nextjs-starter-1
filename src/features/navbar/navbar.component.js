@@ -12,17 +12,8 @@ import styled from "styled-components";
 
 import { Link } from "../../routes";
 
-const Title = styled.a`
-  color: black;
+const Poiner = styled.a`
   cursor: pointer;
-`;
-
-const MenuLink = styled.a`
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.5);
-  :hover {
-    color: rgba(0, 0, 0, 0.7);
-  }
 `;
 
 class NavigationBar extends Component {
@@ -44,11 +35,11 @@ class NavigationBar extends Component {
     return (
       <Fragment>
         <Navbar color="light" light expand="md">
-          <NavbarBrand>
-            <Link route="/">
-              <Title>Business Listing</Title>
-            </Link>
-          </NavbarBrand>
+          <Link route="/">
+            <NavbarBrand>
+              <Poiner>Business Listing</Poiner>
+            </NavbarBrand>
+          </Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             {this.props.isLoggedIn ? (
@@ -57,20 +48,20 @@ class NavigationBar extends Component {
               </Nav>
             ) : (
               <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink>
-                    <Link route="login">
-                      <MenuLink>Log In</MenuLink>
-                    </Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink>
-                    <Link route="signup">
-                      <MenuLink>Sign Up</MenuLink>
-                    </Link>
-                  </NavLink>
-                </NavItem>
+                <Poiner>
+                  <Link route="login">
+                    <NavItem>
+                      <NavLink>Log In</NavLink>
+                    </NavItem>
+                  </Link>
+                </Poiner>
+                <Poiner>
+                  <Link route="signup">
+                    <NavItem>
+                      <NavLink>Sign Up</NavLink>
+                    </NavItem>
+                  </Link>
+                </Poiner>
               </Nav>
             )}
           </Collapse>

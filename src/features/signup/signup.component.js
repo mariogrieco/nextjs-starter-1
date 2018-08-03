@@ -11,6 +11,8 @@ import {
   Input
 } from "reactstrap";
 
+import Center from "../../styled/center.js";
+
 class Signup extends Component {
   state = {
     email: undefined,
@@ -27,8 +29,8 @@ class Signup extends Component {
 
   render() {
     return (
-      <Row>
-        <Col sm={{ size: "4", offset: 4 }}>
+      <Center>
+        <Col md={{ size: "6", offset: 3 }}>
           <Card>
             <CardBody>
               <CardTitle>Sign Up</CardTitle>
@@ -54,7 +56,7 @@ class Signup extends Component {
             </CardBody>
           </Card>
         </Col>
-      </Row>
+      </Center>
     );
   }
 }
