@@ -1,11 +1,11 @@
 import React from "react";
 
-import BusinessDetail from "../../src/features/businessDetail/businessDetail.container";
+import UpdateBusiness from "../../src/features/updateBusiness/updateBusiness.container";
 import { getSingleBusiness } from "../../src/features/businessDetail/businessDetail.action";
 
-const BusinessDetailPage = () => <BusinessDetail />;
+const UpdateBusinessPage = () => <UpdateBusiness />;
 
-BusinessDetailPage.getInitialProps = async ctx => {
+UpdateBusinessPage.getInitialProps = async ctx => {
   const { query, store } = ctx;
   store.dispatch(
     getSingleBusiness({
@@ -15,4 +15,4 @@ BusinessDetailPage.getInitialProps = async ctx => {
   return {};
 };
 
-export default BusinessDetailPage;
+export default UpdateBusinessPage;

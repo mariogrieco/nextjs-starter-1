@@ -24,6 +24,7 @@ class Businesses extends Component {
               <th>#</th>
               <th>Name</th>
               <th>Description</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -36,6 +37,11 @@ class Businesses extends Component {
                   </Link>
                 </td>
                 <td>{business.description}</td>
+                <td>
+                  <Link route="business/update" params={{ _id: business._id }}>
+                    <a>Edit</a>
+                  </Link>
+                </td>
               </tr>
             ))}
           </tbody>

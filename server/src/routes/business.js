@@ -48,4 +48,22 @@ router.get("/:_id", async (req, res) => {
   }
 });
 
+router.post("/update", async (req, res) => {
+  const { _id, name, description } = req.body;
+  try {
+    await Business.findOneAndUpdate(
+      {
+        _id
+      },
+      {
+        name,
+        description
+      }
+    );
+    res.end();
+  } catch (error) {
+    return res.status(500).send({ error: "create: something blew up" });
+  }
+});
+
 module.exports = router;
