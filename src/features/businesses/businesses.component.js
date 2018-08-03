@@ -6,17 +6,16 @@ import AlignRight from "../../styled/alignRight";
 import { Router, Link } from "../../routes";
 
 class Businesses extends Component {
-  handleClick() {
-    Router.pushRoute("business/create");
-  }
-
+  handleCrete = () => Router.pushRoute("business/create");
+  handleDetail = _id => () => Router.pushRoute("business/detail", { _id });
+  handleEdit = _id => () => Router.pushRoute("business/update", { _id });
   handleDelete = _id => () => this.props.deleteBusiness({ _id });
 
   render() {
     return (
       <div>
         <AlignRight>
-          <Button color="primary" onClick={this.handleClick}>
+          <Button color="primary" onClick={this.handleCrete}>
             Create
           </Button>{" "}
         </AlignRight>
@@ -33,18 +32,26 @@ class Businesses extends Component {
             {this.props.businesses.map((business, index) => (
               <tr key={business._id}>
                 <th scope="row">{index + 1}</th>
-                <td>
-                  <Link route="business/detail" params={{ _id: business._id }}>
-                    <a>{business.name}</a>
-                  </Link>
-                </td>
+                <td>{business.name}</td>
                 <td>{business.description}</td>
                 <td>
-                  <Link route="business/update" params={{ _id: business._id }}>
-                    <a>Edit</a>
-                  </Link>
+                  <Button
+                    color="primary"
+                    size="sm"
+                    onClick={this.handleDetail(business._id)}
+                  >
+                    Detail
+                  </Button>{" "}
+                  <Button
+                    color="secondary"
+                    size="sm"
+                    onClick={this.handleEdit(business._id)}
+                  >
+                    Edit
+                  </Button>{" "}
                   <Button
                     color="danger"
+                    size="sm"
                     onClick={this.handleDelete(business._id)}
                   >
                     Delete
