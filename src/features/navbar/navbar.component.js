@@ -8,13 +8,8 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
-import styled from "styled-components";
 
-import { Link } from "../../routes";
-
-const Poiner = styled.a`
-  cursor: pointer;
-`;
+import { goto } from "../../routes";
 
 class NavigationBar extends Component {
   constructor(props) {
@@ -35,11 +30,7 @@ class NavigationBar extends Component {
     return (
       <Fragment>
         <Navbar color="light" light expand="md">
-          <Link route="/">
-            <NavbarBrand>
-              <Poiner>Business Listing</Poiner>
-            </NavbarBrand>
-          </Link>
+          <NavbarBrand onClick={goto("/")}>Business Listing</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             {this.props.isLoggedIn ? (
@@ -48,20 +39,12 @@ class NavigationBar extends Component {
               </Nav>
             ) : (
               <Nav className="ml-auto" navbar>
-                <Poiner>
-                  <Link route="login">
-                    <NavItem>
-                      <NavLink>Log In</NavLink>
-                    </NavItem>
-                  </Link>
-                </Poiner>
-                <Poiner>
-                  <Link route="signup">
-                    <NavItem>
-                      <NavLink>Sign Up</NavLink>
-                    </NavItem>
-                  </Link>
-                </Poiner>
+                <NavItem onClick={goto("login")}>
+                  <NavLink>Log In</NavLink>
+                </NavItem>
+                <NavItem onClick={goto("signup")}>
+                  <NavLink>Sign Up</NavLink>
+                </NavItem>
               </Nav>
             )}
           </Collapse>

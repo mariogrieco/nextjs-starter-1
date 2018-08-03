@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import styled from "styled-components";
 
-import { Router } from "../../routes";
+import { goto } from "../../routes";
 
 import AlignRight from "../../styled/alignRight";
 import PageTitle from "../../styled/pageTitle";
@@ -23,10 +23,6 @@ class CreateBusiness extends Component {
     e.preventDefault();
     this.props.createBusiness(this.state);
   };
-
-  handleCancel() {
-    Router.pushRoute("businesses");
-  }
 
   render() {
     return (
@@ -50,7 +46,7 @@ class CreateBusiness extends Component {
             />
           </FormGroup>
           <AlignRight>
-            <Button onClick={this.handleCancel}>Cancel</Button>
+            <Button onClick={goto("businesses")}>Cancel</Button>
             <EmptySpace />
             <Button color="success" onClick={this.handleSubmit}>
               Submit

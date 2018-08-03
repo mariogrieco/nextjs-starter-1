@@ -3,19 +3,16 @@ import { Table, Button } from "reactstrap";
 
 import AlignRight from "../../styled/alignRight";
 
-import { Router, Link } from "../../routes";
+import { goto } from "../../routes";
 
 class Businesses extends Component {
-  handleCrete = () => Router.pushRoute("business/create");
-  handleDetail = _id => () => Router.pushRoute("business/detail", { _id });
-  handleEdit = _id => () => Router.pushRoute("business/update", { _id });
   handleDelete = _id => () => this.props.deleteBusiness({ _id });
 
   render() {
     return (
       <div>
         <AlignRight>
-          <Button color="primary" onClick={this.handleCrete}>
+          <Button color="primary" onClick={goto("business/create")}>
             Create
           </Button>{" "}
         </AlignRight>
@@ -38,14 +35,14 @@ class Businesses extends Component {
                   <Button
                     color="primary"
                     size="sm"
-                    onClick={this.handleDetail(business._id)}
+                    onClick={goto("business/detail", { _id: business._id })}
                   >
                     Detail
                   </Button>{" "}
                   <Button
                     color="secondary"
                     size="sm"
-                    onClick={this.handleEdit(business._id)}
+                    onClick={goto("business/update", { _id: business._id })}
                   >
                     Edit
                   </Button>{" "}
