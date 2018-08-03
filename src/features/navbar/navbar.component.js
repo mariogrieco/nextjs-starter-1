@@ -8,8 +8,22 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import styled from "styled-components";
 
 import { Link } from "../../routes";
+
+const Title = styled.a`
+  color: black;
+  cursor: pointer;
+`;
+
+const MenuLink = styled.a`
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+  :hover {
+    color: rgba(0, 0, 0, 0.7);
+  }
+`;
 
 class NavigationBar extends Component {
   constructor(props) {
@@ -30,7 +44,11 @@ class NavigationBar extends Component {
     return (
       <Fragment>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Business Listing</NavbarBrand>
+          <NavbarBrand>
+            <Link route="/">
+              <Title>Business Listing</Title>
+            </Link>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             {this.props.isLoggedIn ? (
@@ -40,14 +58,18 @@ class NavigationBar extends Component {
             ) : (
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <Link route="login">
-                    <NavLink>Log In</NavLink>
-                  </Link>
+                  <NavLink>
+                    <Link route="login">
+                      <MenuLink>Log In</MenuLink>
+                    </Link>
+                  </NavLink>
                 </NavItem>
                 <NavItem>
-                  <Link route="signup">
-                    <NavLink>Sign Up</NavLink>
-                  </Link>
+                  <NavLink>
+                    <Link route="signup">
+                      <MenuLink>Sign Up</MenuLink>
+                    </Link>
+                  </NavLink>
                 </NavItem>
               </Nav>
             )}
