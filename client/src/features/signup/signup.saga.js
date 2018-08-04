@@ -7,7 +7,7 @@ import { changeRoute } from "../route/route.action";
 
 function* signupSaga({ payload }) {
   try {
-    const res = yield call(fetch, "/signup", {
+    const res = yield call(fetch, "http://localhost:8080/signup", {
       method: "POST",
       credentials: "same-origin",
       headers: {

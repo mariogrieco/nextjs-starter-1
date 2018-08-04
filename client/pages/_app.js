@@ -20,12 +20,7 @@ class MyApp extends App {
     const { store, req, isServer } = ctx;
 
     if (isServer) {
-      store.dispatch(
-        isLoggedIn({
-          baseUrl: `${req.protocol}://${req.get("Host")}`,
-          session: req.session
-        })
-      );
+      store.dispatch(isLoggedIn({ session: req.session }));
     }
 
     return { pageProps };

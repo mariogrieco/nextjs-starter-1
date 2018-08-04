@@ -4,9 +4,13 @@ import { getBusinesses, getBusinessesSuccess } from "./businesses.action";
 
 function* getBusinessesSaga() {
   try {
-    const res = yield call(fetch, "http://localhost:3000/b/getBusinesses", {
-      credentials: "same-origin"
-    });
+    const res = yield call(
+      fetch,
+      "http://localhost:8080/business/getBusinesses",
+      {
+        credentials: "same-origin"
+      }
+    );
     const { businesses } = yield res.json();
 
     yield put(getBusinessesSuccess({ businesses }));

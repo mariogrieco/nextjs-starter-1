@@ -1,43 +1,16 @@
 {
-  "name": "business-listing",
+  "name": "nextjs-starter",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "@zeit/next-css": "^0.2.0",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "bootstrap": "^4.1.1",
-    "cookie-session": "^2.0.0-beta.3",
-    "crypto": "^1.0.1",
-    "express": "^4.16.3",
-    "isomorphic-unfetch": "^2.1.1",
-    "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.2.6",
-    "next": "^6.1.1",
-    "next-redux-saga": "^3.0.0-beta.1",
-    "next-redux-wrapper": "^2.0.0",
-    "next-routes": "^1.4.2",
-    "prettier": "^1.14.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-redux": "^5.0.7",
-    "reactstrap": "^6.3.1",
-    "redux": "^4.0.0",
-    "redux-actions": "^2.6.1",
-    "redux-devtools-extension": "^2.13.5",
-    "redux-saga": "^0.16.0",
-    "styled-components": "^3.3.3"
-  },
+  "description": "A starter project for Next.js with authentication",
   "devDependencies": {
     "babel-plugin-styled-components": "^1.5.1",
     "husky": "^1.0.0-rc.13",
+    "prettier": "^1.14.0",
     "pretty-quick": "^1.6.0"
   },
   "scripts": {
-    "dev": "node ./server",
-    "build": "next build",
-    "start": "NODE_ENV=production node ./server"
+    "client": "cd client && yarn dev",
+    "server": "cd server && yarn dev"
   },
   "husky": {
     "hooks": {

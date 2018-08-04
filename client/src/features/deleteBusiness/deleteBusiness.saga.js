@@ -5,7 +5,7 @@ import { getBusinesses } from "../businesses/businesses.action";
 
 function* deleteBusinessSaga({ payload }) {
   try {
-    yield call(fetch, "/b/delete", {
+    yield call(fetch, "http://localhost:8080/business/delete", {
       method: "POST",
       credentials: "same-origin",
       headers: {

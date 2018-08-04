@@ -6,7 +6,7 @@ import { changeRoute } from "../route/route.action";
 function* updateBusinessSaga({ payload }) {
   console.log("payload", payload);
   try {
-    yield call(fetch, "/b/update", {
+    yield call(fetch, "http://localhost:8080/business/update", {
       method: "POST",
       credentials: "same-origin",
       headers: {

@@ -5,7 +5,7 @@ import { isLoggedIn, loginSuccess, signoutSuccess } from "./user.action";
 
 function* isLoggedInSaga({ payload }) {
   try {
-    const res = yield call(fetch, `${payload.baseUrl}/isLoggedIn`, {
+    const res = yield call(fetch, "http://localhost:8080/isLoggedIn", {
       credentials: "same-origin",
       method: "POST",
       headers: {
