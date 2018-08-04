@@ -7,9 +7,9 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/businesslisting");
 
-require("./src/models");
+require("./models");
 
-const routes = require("./src/routes");
+const routes = require("./routes");
 
 const port = parseInt(process.env.PORT, 10) || 8080;
 

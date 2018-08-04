@@ -5,9 +5,9 @@
   "author": "Max Li <ml@maxlivinci.com> (https://maxlivinci.com/)",
   "license": "MIT",
   "scripts": {
-    "dev": "node ./index.js",
+    "dev": "node ./src/index.js",
     "build": "next build",
-    "start": "NODE_ENV=production node ./index.js"
+    "start": "NODE_ENV=production node ./src/index.js"
   },
   "dependencies": {
     "@zeit/next-css": "^0.2.0",

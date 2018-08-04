@@ -5,8 +5,8 @@
   "author": "Max Li <ml@maxlivinci.com> (https://maxlivinci.com/)",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./index.js",
-    "start": "NODE_ENV=production node ./index.js"
+    "dev": "nodemon ./src/index.js",
+    "start": "NODE_ENV=production node ./src/index.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
