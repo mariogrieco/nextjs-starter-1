@@ -21,7 +21,6 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    domain: "http://localhost:3000",
     secret: "secret"
   })
 );

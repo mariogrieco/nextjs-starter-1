@@ -7,7 +7,8 @@ function* deleteBusinessSaga({ payload }) {
   try {
     yield call(fetch, "http://localhost:8080/business/delete", {
       method: "POST",
-      credentials: "same-origin",
+      mode: "cors",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },

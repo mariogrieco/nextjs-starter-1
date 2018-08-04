@@ -6,14 +6,13 @@ import { isLoggedIn, loginSuccess, signoutSuccess } from "./user.action";
 function* isLoggedInSaga({ payload }) {
   try {
     const res = yield call(fetch, "http://localhost:8080/isLoggedIn", {
-      credentials: "same-origin",
       method: "POST",
+      mode: "cors",
+      credentials: "include",
       headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        session: payload.session
-      })
+        "Content-Type": "application/json",
+        cookie: payload.cookie
+      }
     });
 
     const data = yield res.json();

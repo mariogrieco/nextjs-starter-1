@@ -8,7 +8,7 @@ function* getBusinessesSaga() {
       fetch,
       "http://localhost:8080/business/getBusinesses",
       {
-        credentials: "same-origin"
+        credentials: "include"
       }
     );
     const { businesses } = yield res.json();

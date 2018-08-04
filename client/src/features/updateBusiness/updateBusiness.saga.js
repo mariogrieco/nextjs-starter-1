@@ -8,7 +8,8 @@ function* updateBusinessSaga({ payload }) {
   try {
     yield call(fetch, "http://localhost:8080/business/update", {
       method: "POST",
-      credentials: "same-origin",
+      mode: "cors",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },

@@ -9,7 +9,8 @@ function* signoutSaga() {
   try {
     yield call(fetch, "http://localhost:8080/signout", {
       method: "POST",
-      credentials: "same-origin"
+      mode: "cors",
+      credentials: "include"
     });
     yield put(signoutSuccess());
     yield put(changeRoute("/"));

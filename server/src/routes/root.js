@@ -84,9 +84,7 @@ router.post("/signout", async (req, res) => {
 
 router.post("/isLoggedIn", async (req, res) => {
   try {
-    const {
-      session: { userToken }
-    } = req.body;
+    const { userToken } = req.session;
     if (userToken) {
       const { _id, email } = jwt.verify(userToken, "secret");
       return res.json({ isLoggedIn: true, user: { _id, email } });

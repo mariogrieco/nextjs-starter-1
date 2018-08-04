@@ -20,7 +20,7 @@ class MyApp extends App {
     const { store, req, isServer } = ctx;
 
     if (isServer) {
-      store.dispatch(isLoggedIn({ session: req.session }));
+      store.dispatch(isLoggedIn({ cookie: req.headers.cookie }));
     }
 
     return { pageProps };

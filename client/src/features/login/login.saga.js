@@ -9,7 +9,8 @@ function* loginSaga({ payload }) {
   try {
     const res = yield call(fetch, "http://localhost:8080/login", {
       method: "POST",
-      credentials: "same-origin",
+      mode: "cors",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },

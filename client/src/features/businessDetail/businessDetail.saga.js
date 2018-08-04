@@ -11,7 +11,8 @@ function* getSingleBusinessSaga({ payload }) {
       fetch,
       `http://localhost:8080/business/${payload._id}`,
       {
-        credentials: "same-origin"
+        mode: "cors",
+        credentials: "include"
       }
     );
     const { business } = yield res.json();
