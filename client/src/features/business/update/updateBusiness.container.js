@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 
 import UpdateBusiness from "./updateBusiness.component";
 import { updateBusiness } from "./updateBusiness.action";
-import { getBusinessDetail } from "../businessDetail/businessDetail.selector";
+import { getBusinessDetail } from "../detail/businessDetail.selector";
 
 const mapStateToProps = state => {
   return {

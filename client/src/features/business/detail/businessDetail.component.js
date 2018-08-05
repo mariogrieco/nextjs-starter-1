@@ -9,10 +9,10 @@ import {
   Button
 } from "reactstrap";
 
-import { goto } from "../../routes";
+import { goto } from "../../../routes";
 
-import AlignRight from "../../styled/alignRight";
-import PageTitle from "../../styled/pageTitle";
+import AlignRight from "../../../styled/alignRight";
+import PageTitle from "../../../styled/pageTitle";
 
 class businessDetail extends Component {
   render() {
@@ -27,7 +27,7 @@ class businessDetail extends Component {
             </CardBody>
           </Card>
           <AlignRight>
-            <Button onClick={goto("businesses")}>Back</Button>
+            <Button onClick={goto("business")}>Back</Button>
           </AlignRight>
         </Col>
       </Row>

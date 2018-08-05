@@ -30,7 +30,7 @@ class NavigationBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             {this.props.isLoggedIn ? (
               <Nav className="ml-auto" navbar>
-                <NavLink onClick={goto("businesses")}>Business Listing</NavLink>
+                <NavLink onClick={goto("business")}>Business Listing</NavLink>
                 <NavLink onClick={goto("blog")}>Blog</NavLink>
                 <NavLink onClick={this.props.signout}>Sign out</NavLink>
               </Nav>

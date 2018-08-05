@@ -1,7 +1,7 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 
 import { updateBusiness, updateBusinessSuccess } from "./updateBusiness.action";
-import { changeRoute } from "../route/route.action";
+import { changeRoute } from "../../route/route.action";
 
 function* updateBusinessSaga({ payload }) {
   try {
@@ -20,7 +20,7 @@ function* updateBusinessSaga({ payload }) {
     });
     yield put(updateBusinessSuccess());
 
-    yield put(changeRoute("/businesses"));
+    yield put(changeRoute("/business"));
   } catch (error) {
     yield console.log("error", error);
   }

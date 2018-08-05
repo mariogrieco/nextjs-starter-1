@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 
-import Businesses from "./businesses.component";
-import { getBusinesses } from "./businesses.selector";
-import { deleteBusiness } from "../deleteBusiness/deleteBusiness.action";
+import Businesses from "./business.component";
+import { getBusinesses } from "./business.selector";
+import { deleteBusiness } from "./delete/deleteBusiness.action";
 
 const mapStateToProps = state => ({
   businesses: getBusinesses(state)

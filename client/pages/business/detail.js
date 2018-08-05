@@ -1,7 +1,7 @@
 import React from "react";
 
-import BusinessDetail from "../../src/features/businessDetail/businessDetail.container";
-import { getSingleBusiness } from "../../src/features/businessDetail/businessDetail.action";
+import BusinessDetail from "../../src/features/business/detail/businessDetail.container";
+import { getSingleBusiness } from "../../src/features/business/detail/businessDetail.action";
 
 const BusinessDetailPage = () => <BusinessDetail />;
 

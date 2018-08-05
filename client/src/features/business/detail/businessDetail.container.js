@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 
 import businessDetail from "./businessDetail.component";
-import { getBusinessDetail } from "../businessDetail/businessDetail.selector";
+import { getBusinessDetail } from "./businessDetail.selector";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     business: getBusinessDetail(state)
   };

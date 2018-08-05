@@ -5,11 +5,11 @@ import signout from "../features/signout/signout.saga";
 import login from "../features/login/login.saga";
 import user from "../features/user/user.saga";
 import route from "../features/route/route.saga";
-import businesses from "../features/businesses/businesses.saga";
-import createBusiness from "../features/createBusiness/createBusiness.saga";
-import updateBusiness from "../features/updateBusiness/updateBusiness.saga";
-import deleteBusiness from "../features/deleteBusiness/deleteBusiness.saga";
-import businessDetail from "../features/businessDetail/businessDetail.saga";
+import businesses from "../features/business/business.saga";
+import createBusiness from "../features/business/create/createBusiness.saga";
+import updateBusiness from "../features/business/update/updateBusiness.saga";
+import deleteBusiness from "../features/business/delete/deleteBusiness.saga";
+import businessDetail from "../features/business/detail/businessDetail.saga";
 
 function* rootSaga() {
   yield all([

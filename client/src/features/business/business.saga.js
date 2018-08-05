@@ -1,6 +1,6 @@
 import { all, takeLatest, call, put } from "redux-saga/effects";
 
-import { getBusinesses, getBusinessesSuccess } from "./businesses.action";
+import { getBusinesses, getBusinessesSuccess } from "./business.action";
 
 function* getBusinessesSaga({ payload }) {
   try {

@@ -1,7 +1,7 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 
 import { deleteBusiness, deleteBusinessSuccess } from "./deleteBusiness.action";
-import { getBusinesses } from "../businesses/businesses.action";
+import { getBusinesses } from "../business.action";
 
 function* deleteBusinessSaga({ payload }) {
   try {

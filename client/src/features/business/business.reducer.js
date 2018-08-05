@@ -1,7 +1,7 @@
 import { handleActions, combineActions } from "redux-actions";
 
-import { getBusinessesSuccess } from "../businesses/businesses.action";
-import { createBusinessSuccess } from "../createBusiness/createBusiness.action";
+import { getBusinessesSuccess } from "./business.action";
+import { createBusinessSuccess } from "./create/createBusiness.action";
 
 const defaultState = [];
 
