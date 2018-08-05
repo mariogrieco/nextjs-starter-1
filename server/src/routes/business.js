@@ -2,12 +2,16 @@ const express = require("express");
 
 const Business = require("../models/business");
 
+const { getUserId } = require("../utils");
+
 const router = express.Router();
 
 router.post("/create", async (req, res) => {
   const { name, description } = req.body;
+  const userId = getUserId(req);
   try {
     const business = new Business({
+      userId,
       name,
       description
     });
@@ -16,6 +20,7 @@ router.post("/create", async (req, res) => {
 
     return res.json({
       _id: business._id,
+      userId: business.userId,
       name: business.name,
       description: business.description
     });
@@ -25,8 +30,9 @@ router.post("/create", async (req, res) => {
 });
 
 router.get("/getBusinesses", async (req, res) => {
+  const userId = getUserId(req);
   try {
-    const businesses = await Business.find();
+    const businesses = await Business.find({ userId });
     return res.json({
       businesses
     });

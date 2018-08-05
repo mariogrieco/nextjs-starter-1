@@ -2,13 +2,16 @@ import { all, takeLatest, call, put } from "redux-saga/effects";
 
 import { getBusinesses, getBusinessesSuccess } from "./businesses.action";
 
-function* getBusinessesSaga() {
+function* getBusinessesSaga({ payload }) {
   try {
     const res = yield call(
       fetch,
       "http://localhost:8080/business/getBusinesses",
       {
-        credentials: "include"
+        credentials: "include",
+        headers: {
+          cookie: payload.cookie
+        }
       }
     );
     const { businesses } = yield res.json();

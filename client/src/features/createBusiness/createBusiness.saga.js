@@ -16,11 +16,12 @@ function* createBusinessSaga({ payload }) {
         description: payload.description
       })
     });
-    const { _id, name, description } = yield res.json();
+    const { _id, userId, name, description } = yield res.json();
 
     yield put(
       createBusinessSuccess({
         _id,
+        userId,
         name,
         description
       })

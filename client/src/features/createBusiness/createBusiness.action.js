@@ -5,8 +5,9 @@ const { createBusiness, createBusinessSuccess } = createActions({
     name,
     description
   }),
-  CREATE_BUSINESS_SUCCESS: ({ _id, name, description } = {}) => ({
+  CREATE_BUSINESS_SUCCESS: ({ _id, userId, name, description } = {}) => ({
     _id,
+    userId,
     name,
     description
   })

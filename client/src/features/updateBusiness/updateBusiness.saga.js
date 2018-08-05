@@ -4,7 +4,6 @@ import { updateBusiness, updateBusinessSuccess } from "./updateBusiness.action";
 import { changeRoute } from "../route/route.action";
 
 function* updateBusinessSaga({ payload }) {
-  console.log("payload", payload);
   try {
     yield call(fetch, "http://localhost:8080/business/update", {
       method: "POST",
