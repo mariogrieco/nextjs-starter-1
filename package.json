@@ -6,13 +6,16 @@
     "babel-plugin-styled-components": "^1.5.1",
     "concurrently": "^3.6.1",
     "husky": "^1.0.0-rc.13",
+    "inquirer": "^6.0.0",
+    "mkdirp": "^0.5.1",
     "prettier": "^1.14.0",
     "pretty-quick": "^1.6.0"
   },
   "scripts": {
     "client": "cd client && yarn dev",
     "server": "cd server && yarn dev",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "generate": "node ./scripts/generate.js"
   },
   "husky": {
     "hooks": {
