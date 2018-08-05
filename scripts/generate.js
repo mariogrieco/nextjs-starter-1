@@ -15,6 +15,7 @@ const QUESTIONS = [
 inquirer.prompt(QUESTIONS).then(answers => {
   const featureName = answers["feature-name"];
   createPages(featureName);
+  createFeature(featureName);
   createModle(featureName);
   createRoute(featureName);
 });
@@ -27,6 +28,18 @@ const createPages = featureName => {
   filesToCreate.forEach(file => {
     const contents = require(`${templatePath}/${file}`)(featureName);
     const writePath = `${CURR_DIR}/client/pages/${featureName}/${file}`;
+    fs.writeFileSync(writePath, contents, "utf8");
+  });
+};
+
+const createFeature = featureName => {
+  mkdirp.sync(`${CURR_DIR}/client/src/features/${featureName}`);
+  const templatePath = `${CURR_DIR}/scripts/templates/client/features`;
+  const filesToCreate = fs.readdirSync(templatePath);
+
+  filesToCreate.forEach(file => {
+    const contents = require(`${templatePath}/${file}`)(featureName);
+    const writePath = `${CURR_DIR}/client/src/features/${featureName}/${file}`;
     fs.writeFileSync(writePath, contents, "utf8");
   });
 };
