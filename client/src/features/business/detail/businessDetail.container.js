@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import businessDetail from "./businessDetail.component";
-import { getBusinessDetail } from "./businessDetail.selector";
+import { getBusinessDetail } from "../business.selector";
 
 const mapStateToProps = state => {
   return {

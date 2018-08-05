@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 
 import UpdateBusiness from "./updateBusiness.component";
-import { updateBusiness } from "./updateBusiness.action";
-import { getBusinessDetail } from "../detail/businessDetail.selector";
+import { updateBusiness } from "../business.action";
+import { getBusinessDetail } from "../business.selector";
 
 const mapStateToProps = state => {
   return {

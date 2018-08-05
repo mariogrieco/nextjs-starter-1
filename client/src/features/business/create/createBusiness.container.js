@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import CreateBusiness from "./createBusiness.component";
-import { createBusiness } from "./createBusiness.action";
+import { createBusiness } from "../business.action";
 
 const mapStateToProps = state => ({});
 

@@ -6,7 +6,7 @@ module.exports = featureName => {
   return `import React from "react";
 
 import ${Model}Detail from "../../src/features/${featureName}/detail/${featureName}Detail.container";
-import { getSingle${Model} } from "../../src/features/${featureName}/detail/${featureName}Detail.action";
+import { getSingle${Model} } from "../../src/features/${featureName}/${featureName}.action";
 
 const ${Model}DetailPage = () => <${Model}Detail />;
 

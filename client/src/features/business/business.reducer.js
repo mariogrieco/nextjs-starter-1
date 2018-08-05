@@ -1,9 +1,16 @@
-import { handleActions, combineActions } from "redux-actions";
+import { handleActions } from "redux-actions";
 
-import { getBusinessesSuccess } from "./business.action";
-import { createBusinessSuccess } from "./create/createBusiness.action";
+import {
+  getSingleBusinessSuccess,
+  getBusinessesSuccess,
+  createBusinessSuccess
+} from "./business.action";
+import { Object } from "core-js";
 
-const defaultState = [];
+const defaultState = {
+  businesses: [],
+  business: {}
+};
 
 const reducer = handleActions(
   {
@@ -11,17 +18,21 @@ const reducer = handleActions(
       state,
       { payload: { _id, name, description } }
     ) => {
-      return [
-        ...state,
-        {
+      return Object.assign({}, state, {
+        businesses: state.businesses.push({
           _id,
           name,
           description
-        }
-      ];
+        })
+      });
     },
     [getBusinessesSuccess]: (state, { payload: { businesses } }) => {
-      return [...businesses];
+      return Object.assign({}, state, {
+        businesses
+      });
+    },
+    [getSingleBusinessSuccess]: (state, { payload: { business } }) => {
+      return Object.assign({}, state, { business });
     }
   },
   defaultState

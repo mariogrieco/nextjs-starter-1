@@ -6,7 +6,7 @@ module.exports = featureName => {
   return `import React from "react";
 
 import Update${Model} from "../../src/features/${featureName}/update/update${Model}.container";
-import { getSingle${Model} } from "../../src/features/${featureName}/detail/${featureName}Detail.action";
+import { getSingle${Model} } from "../../src/features/${featureName}/${featureName}.action";
 
 const Update${Model}Page = () => <Update${Model} />;
 

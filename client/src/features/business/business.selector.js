@@ -1,3 +1,5 @@
-const getBusinesses = state => state.business;
+const getBusinesses = state => state.business.businesses;
 
-export { getBusinesses };
+const getBusinessDetail = state => state.business.business;
+
+export { getBusinesses, getBusinessDetail };
