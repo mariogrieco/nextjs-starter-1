@@ -35,7 +35,7 @@ class Businesses extends Component {
                   <Button
                     color="primary"
                     size="sm"
-                    onClick={goto("business/detail", { _id: business._id })}
+                    onClick={goto("business/show", { _id: business._id })}
                   >
                     Detail
                   </Button>{" "}

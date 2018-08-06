@@ -1,6 +1,6 @@
 import React from "react";
 
-import ShowBusiness from "../../src/features/business/show/showBusiness.component";
+import ShowBusiness from "../../src/features/business/show/showBusiness.container";
 import { getSingleBusiness } from "../../src/features/business/business.action";
 
 const ShowBusinessPage = () => <ShowBusiness />;
