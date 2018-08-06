@@ -5,12 +5,12 @@ module.exports = featureName => {
 
   return `import React from "react";
 
-import ${Model}Detail from "../../src/features/${featureName}/detail/${featureName}Detail.container";
+import Show${Model} from "../../src/features/${featureName}/show/show${Model}.component";
 import { getSingle${Model} } from "../../src/features/${featureName}/${featureName}.action";
 
-const ${Model}DetailPage = () => <${Model}Detail />;
+const Show${Model}Page = () => <Show${Model} />;
 
-${Model}DetailPage.getInitialProps = async ctx => {
+Show${Model}Page.getInitialProps = async ctx => {
   const { query, store } = ctx;
   store.dispatch(
     getSingle${Model}({
@@ -20,6 +20,6 @@ ${Model}DetailPage.getInitialProps = async ctx => {
   return {};
 };
 
-export default ${Model}DetailPage;  
+export default Show${Model}Page;
   `;
 };

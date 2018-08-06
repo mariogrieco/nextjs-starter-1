@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 
-import businessDetail from "./businessDetail.component";
-import { getBusinessDetail } from "../business.selector";
+import showBusiness from "./showBusiness.component";
+import { getBusiness } from "../business.selector";
 
 const mapStateToProps = state => {
   return {
-    business: getBusinessDetail(state)
+    business: getBusiness(state)
   };
 };
 
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({});
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(businessDetail);
+)(showBusiness);

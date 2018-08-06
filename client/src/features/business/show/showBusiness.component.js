@@ -14,7 +14,7 @@ import { goto } from "../../../routes";
 import AlignRight from "../../../styled/alignRight";
 import PageTitle from "../../../styled/pageTitle";
 
-class businessDetail extends Component {
+class ShowBusiness extends Component {
   render() {
     return (
       <Row>
@@ -35,4 +35,4 @@ class businessDetail extends Component {
   }
 }
 
-export default businessDetail;
+export default ShowBusiness;

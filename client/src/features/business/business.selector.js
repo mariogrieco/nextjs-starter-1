@@ -1,5 +1,5 @@
 const getBusinesses = state => state.business.businesses;
 
-const getBusinessDetail = state => state.business.business;
+const getBusiness = state => state.business.business;
 
-export { getBusinesses, getBusinessDetail };
+export { getBusinesses, getBusiness };
