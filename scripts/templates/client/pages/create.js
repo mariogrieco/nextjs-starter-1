@@ -5,7 +5,7 @@ module.exports = featureName => {
 
   return `import React from "react";
 
-import Create${Model} from "../../src/features/{featureName}/create/create${Model}.container";
+import Create${Model} from "../../src/features/${featureName}/create/create${Model}.container";
 
 const Create${Model}Page = () => <Create${Model} />;
 

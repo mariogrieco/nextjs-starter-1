@@ -1,23 +1,18 @@
-const { capitalizeFirstLetter } = require("../../utils");
-
-module.exports = featureName => {
-  const Model = capitalizeFirstLetter(featureName);
-
-  return `import React, { Component } from "react";
+import React, { Component } from "react";
 import { Table, Button } from "reactstrap";
 
 import AlignRight from "../../styled/alignRight";
 
 import { goto } from "../../routes";
 
-class ${Model}s extends Component {
-  handleDelete = _id => () => this.props.delete${Model}({ _id });
+class Blogs extends Component {
+  handleDelete = _id => () => this.props.deleteBlog({ _id });
 
   render() {
     return (
       <div>
         <AlignRight>
-          <Button color="primary" onClick={goto("${featureName}/create")}>
+          <Button color="primary" onClick={goto("blog/create")}>
             Create
           </Button>{" "}
         </AlignRight>
@@ -31,30 +26,30 @@ class ${Model}s extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.${featureName}s.map((${featureName}, index) => (
-              <tr key={${featureName}._id}>
+            {this.props.blogs.map((blog, index) => (
+              <tr key={blog._id}>
                 <th scope="row">{index + 1}</th>
-                <td>{${featureName}.name}</td>
-                <td>{${featureName}.description}</td>
+                <td>{blog.name}</td>
+                <td>{blog.description}</td>
                 <td>
                   <Button
                     color="primary"
                     size="sm"
-                    onClick={goto("${featureName}/show", { _id: ${featureName}._id })}
+                    onClick={goto("blog/show", { _id: blog._id })}
                   >
                     Detail
                   </Button>{" "}
                   <Button
                     color="secondary"
                     size="sm"
-                    onClick={goto("${featureName}/update", { _id: ${featureName}._id })}
+                    onClick={goto("blog/update", { _id: blog._id })}
                   >
                     Edit
                   </Button>{" "}
                   <Button
                     color="danger"
                     size="sm"
-                    onClick={this.handleDelete(${featureName}._id)}
+                    onClick={this.handleDelete(blog._id)}
                   >
                     Delete
                   </Button>
@@ -68,6 +63,4 @@ class ${Model}s extends Component {
   }
 }
 
-export default ${Model}s;  
-`;
-};
+export default Blogs;

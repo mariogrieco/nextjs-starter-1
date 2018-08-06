@@ -9,6 +9,7 @@ const { Schema } = mongoose;
 
 const ${Model}Schema = new Schema({
   name: { type: String },
+  userId: { type: String },
   createdAt: { type: Date, default: Date.now }
 });
 

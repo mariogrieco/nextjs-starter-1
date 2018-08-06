@@ -6,11 +6,11 @@ module.exports = featureName => {
   return `import { connect } from "react-redux";
 import Update${Model} from "./update${Model}.component";
 import { update${Model} } from "../${featureName}.action";
-import { get${Model}Detail } from "../${featureName}.selector";
+import { get${Model} } from "../${featureName}.selector";
 
 const mapStateToProps = state => {
   return {
-    ${featureName}: get${Model}Detail(state)
+    ${featureName}: get${Model}(state)
   };
 };
 

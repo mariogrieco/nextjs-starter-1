@@ -1,11 +1,6 @@
-const { capitalizeFirstLetter } = require("../utils");
+const express = require("express");
 
-module.exports = featureName => {
-  const Model = capitalizeFirstLetter(featureName);
-
-  return `const express = require("express");
-
-const ${Model} = require("../models/${featureName}");
+const Blog = require("../models/blog");
 
 const { getUserId } = require("../utils");
 
@@ -15,29 +10,29 @@ router.post("/create", async (req, res) => {
   const { name } = req.body;
   const userId = getUserId(req);
   try {
-    const ${featureName} = new ${Model}({
+    const blog = new Blog({
       userId,
       name
     });
 
-    ${featureName}.save();
+    blog.save();
 
     return res.json({
-      _id: ${featureName}._id,
-      userId: ${featureName}.userId,
-      name: ${featureName}.name
+      _id: blog._id,
+      userId: blog.userId,
+      name: blog.name
     });
   } catch (error) {
     return res.status(500).send({ error: "create: something blew up" });
   }
 });
 
-router.get("/get${Model}s", async (req, res) => {
+router.get("/getBlogs", async (req, res) => {
   const userId = getUserId(req);
   try {
-    const ${featureName}s = await ${Model}.find({ userId });
+    const blogs = await Blog.find({ userId });
     return res.json({
-      ${featureName}s
+      blogs
     });
   } catch (error) {
     return res.status(500).send({ error: "create: something blew up" });
@@ -46,11 +41,11 @@ router.get("/get${Model}s", async (req, res) => {
 
 router.get("/:_id", async (req, res) => {
   try {
-    const ${featureName} = await ${Model}.findOne({
+    const blog = await Blog.findOne({
       _id: req.params._id
     });
     return res.json({
-      ${featureName}
+      blog
     });
   } catch (error) {
     return res.status(500).send({ error: "create: something blew up" });
@@ -60,7 +55,7 @@ router.get("/:_id", async (req, res) => {
 router.post("/update", async (req, res) => {
   const { _id, name } = req.body;
   try {
-    await ${Model}.findOneAndUpdate(
+    await Blog.findOneAndUpdate(
       {
         _id
       },
@@ -77,7 +72,7 @@ router.post("/update", async (req, res) => {
 router.post("/delete", async (req, res) => {
   const { _id } = req.body;
   try {
-    await ${Model}.findOneAndDelete({
+    await Blog.findOneAndDelete({
       _id
     });
     res.end();
@@ -87,5 +82,3 @@ router.post("/delete", async (req, res) => {
 });
 
 module.exports = router;
-  `;
-};

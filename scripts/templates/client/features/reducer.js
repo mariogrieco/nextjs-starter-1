@@ -24,10 +24,10 @@ const reducer = handleActions(
       { payload: { _id, name } }
     ) => {
       return Object.assign({}, state, {
-        ${featureName}s: state.${featureName}s.push({
+        ${featureName}s: [...state.${featureName}s, {
           _id,
           name
-        })
+        }]
       });
     },
     [get${Model}sSuccess]: (state, { payload: { ${featureName}s } }) => {

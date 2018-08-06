@@ -117,7 +117,7 @@ function* delete${Model}Saga({ payload }) {
       })
     });
     yield put(delete${Model}Success());
-    yield put(get${Model}es());
+    yield put(get${Model}s());
   } catch (error) {
     yield console.log("error", error);
   }

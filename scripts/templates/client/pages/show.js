@@ -5,7 +5,7 @@ module.exports = featureName => {
 
   return `import React from "react";
 
-import Show${Model} from "../../src/features/${featureName}/show/show${Model}.component";
+import Show${Model} from "../../src/features/${featureName}/show/show${Model}.container";
 import { getSingle${Model} } from "../../src/features/${featureName}/${featureName}.action";
 
 const Show${Model}Page = () => <Show${Model} />;

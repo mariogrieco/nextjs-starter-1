@@ -10,7 +10,7 @@ import { get${Model}s } from "./${featureName}.selector";
 import { delete${Model} } from "./${featureName}.action";
 
 const mapStateToProps = state => ({
-  ${featureName}s: get${Model}es(state)
+  ${featureName}s: get${Model}s(state)
 });
 
 const mapDispatchToProps = dispatch => ({
