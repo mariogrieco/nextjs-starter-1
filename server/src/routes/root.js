@@ -27,7 +27,7 @@ router.post("/signup", async (req, res) => {
           _id: user._id,
           email: user.email
         },
-        "secret",
+        process.env.JWT_SECRET,
         {
           expiresIn: "7d"
         }
@@ -61,7 +61,7 @@ router.post("/login", async (req, res) => {
         _id: user._id,
         email: user.email
       },
-      "secret",
+      process.env.JWT_SECRET,
       {
         expiresIn: "7d"
       }
@@ -86,7 +86,7 @@ router.post("/isLoggedIn", async (req, res) => {
   try {
     const { userToken } = req.session;
     if (userToken) {
-      const { _id, email } = jwt.verify(userToken, "secret");
+      const { _id, email } = jwt.verify(userToken, process.env.JWT_SECRET);
       return res.json({ isLoggedIn: true, user: { _id, email } });
     } else {
       return res.json({ isLoggedIn: false });
