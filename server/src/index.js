@@ -2,12 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
-const mongoose = require("mongoose");
 
 require("dotenv").config();
 
-mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/businesslisting");
+const mongoose = require("./utils/mongoose");
+mongoose.connect();
 
 require("./models");
 
