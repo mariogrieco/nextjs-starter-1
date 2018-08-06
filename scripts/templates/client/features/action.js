@@ -17,21 +17,24 @@ const {
   delete${Model},
   delete${Model}Success
 } = createActions({
-  CREATE_${featureName.toUpperCase()}: ({ name } = {}) => ({
-    name
+  CREATE_${featureName.toUpperCase()}: ({ name, description } = {}) => ({
+    name,
+    description
   }),
-  CREATE_${featureName.toUpperCase()}_SUCCESS: ({ _id, userId, name } = {}) => ({
+  CREATE_${featureName.toUpperCase()}_SUCCESS: ({ _id, userId, name, description } = {}) => ({
     _id,
     userId,
-    name
+    name,
+    description
   }),
   GET_${featureName.toUpperCase()}S: ({ cookie } = {}) => ({ cookie }),
   GET_${featureName.toUpperCase()}S_SUCCESS: ({ ${featureName}s } = {}) => ({ ${featureName}s }),
   GET_SINGLE_${featureName.toUpperCase()}: ({ _id } = {}) => ({ _id }),
   GET_SINGLE_${featureName.toUpperCase()}_SUCCESS: ({ ${featureName} } = {}) => ({ ${featureName} }),
-  UPDATE_${featureName.toUpperCase()}: ({ _id, name } = {}) => ({
+  UPDATE_${featureName.toUpperCase()}: ({ _id, name, description } = {}) => ({
     _id,
-    name
+    name,
+    description
   }),
   UPDATE_${featureName.toUpperCase()}_SUCCESS: () => ({}),
   DELETE_${featureName.toUpperCase()}: ({ _id } = {}) => ({

@@ -1,5 +1,4 @@
 import { all, takeLatest, call, put } from "redux-saga/effects";
-
 import {
   createBlog,
   createBlogSuccess,
@@ -24,16 +23,18 @@ function* createBlogSaga({ payload }) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name: payload.name
+        name: payload.name,
+        description: payload.description
       })
     });
-    const { _id, userId, name } = yield res.json();
+    const { _id, userId, name, description } = yield res.json();
 
     yield put(
       createBlogSuccess({
         _id,
         userId,
-        name
+        name,
+        description
       })
     );
 
@@ -80,7 +81,8 @@ function* updateBlogSaga({ payload }) {
       },
       body: JSON.stringify({
         _id: payload._id,
-        name: payload.name
+        name: payload.name,
+        description: payload.description
       })
     });
     yield put(updateBlogSuccess());

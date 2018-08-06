@@ -4,7 +4,6 @@ module.exports = featureName => {
   const Model = capitalizeFirstLetter(featureName);
 
   return `const express = require("express");
-
 const ${Model} = require("../models/${featureName}");
 
 const { getUserId } = require("../utils");
@@ -12,12 +11,13 @@ const { getUserId } = require("../utils");
 const router = express.Router();
 
 router.post("/create", async (req, res) => {
-  const { name } = req.body;
+  const { name, description } = req.body;
   const userId = getUserId(req);
   try {
     const ${featureName} = new ${Model}({
       userId,
-      name
+      name,
+      description
     });
 
     ${featureName}.save();
@@ -25,7 +25,8 @@ router.post("/create", async (req, res) => {
     return res.json({
       _id: ${featureName}._id,
       userId: ${featureName}.userId,
-      name: ${featureName}.name
+      name: ${featureName}.name,
+      description: ${featureName}.description
     });
   } catch (error) {
     return res.status(500).send({ error: "create: something blew up" });
@@ -58,14 +59,15 @@ router.get("/:_id", async (req, res) => {
 });
 
 router.post("/update", async (req, res) => {
-  const { _id, name } = req.body;
+  const { _id, name, description } = req.body;
   try {
     await ${Model}.findOneAndUpdate(
       {
         _id
       },
       {
-        name
+        name,
+        description
       }
     );
     res.end();
@@ -86,6 +88,6 @@ router.post("/delete", async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router;  
   `;
 };

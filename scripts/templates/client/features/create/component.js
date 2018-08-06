@@ -6,7 +6,7 @@ module.exports = featureName => {
   return `import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import styled from "styled-components";
-
+  
 import { goto } from "../../../routes";
 
 import AlignRight from "../../../styled/alignRight";

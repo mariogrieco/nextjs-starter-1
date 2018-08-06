@@ -22,6 +22,9 @@ class ShowBlog extends Component {
           <PageTitle>Blog Detail</PageTitle>
           <Card>
             <CardHeader>{this.props.blog.name}</CardHeader>
+            <CardBody>
+              <CardText>{this.props.blog.description}</CardText>
+            </CardBody>
           </Card>
           <AlignRight>
             <Button onClick={goto("blog")}>Back</Button>

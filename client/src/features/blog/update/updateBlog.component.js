@@ -14,20 +14,23 @@ const EmptySpace = styled.div`
 class UpdateBlog extends Component {
   state = {
     _id: this.props.blog._id,
-    name: this.props.blog.name
+    name: this.props.blog.name,
+    description: this.props.blog.description
   };
 
   static getDerivedStateFromProps(props, state) {
     if (props.blog._id !== state._id) {
       return {
         _id: props.blog._id,
-        name: props.blog.name
+        name: props.blog.name,
+        description: props.blog.description
       };
     }
     return null;
   }
 
   handleNameChange = e => this.setState({ name: e.target.value });
+  handleDescriptionChange = e => this.setState({ description: e.target.value });
   handleSubmit = e => {
     e.preventDefault();
     this.props.updateBlog(this.state);
@@ -44,6 +47,14 @@ class UpdateBlog extends Component {
               placeholder="Name"
               value={this.state.name || ""}
               onChange={this.handleNameChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Description</Label>
+            <Input
+              type="textarea"
+              value={this.state.description || ""}
+              onChange={this.handleDescriptionChange}
             />
           </FormGroup>
           <AlignRight>

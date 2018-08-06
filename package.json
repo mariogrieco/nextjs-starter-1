@@ -12,8 +12,8 @@
     "pretty-quick": "^1.6.0"
   },
   "scripts": {
-    "client": "cd client && yarn dev",
-    "server": "cd server && yarn dev",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
     "generate": "node ./scripts/generate.js"
   },

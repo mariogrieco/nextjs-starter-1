@@ -4,7 +4,6 @@ module.exports = featureName => {
   const Model = capitalizeFirstLetter(featureName);
 
   return `import { handleActions } from "redux-actions";
-
 import {
   getSingle${Model}Success,
   get${Model}sSuccess,
@@ -21,13 +20,17 @@ const reducer = handleActions(
   {
     [create${Model}Success]: (
       state,
-      { payload: { _id, name } }
+      { payload: { _id, name, description } }
     ) => {
       return Object.assign({}, state, {
-        ${featureName}s: [...state.${featureName}s, {
-          _id,
-          name
-        }]
+        ${featureName}s: [
+          ...state.${featureName}s,
+          {
+            _id,
+            name,
+            description
+          }
+        ]
       });
     },
     [get${Model}sSuccess]: (state, { payload: { ${featureName}s } }) => {

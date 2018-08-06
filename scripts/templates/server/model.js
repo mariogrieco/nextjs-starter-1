@@ -10,6 +10,7 @@ const { Schema } = mongoose;
 const ${Model}Schema = new Schema({
   name: { type: String },
   userId: { type: String },
+  description: { type: String },
   createdAt: { type: Date, default: Date.now }
 });
 

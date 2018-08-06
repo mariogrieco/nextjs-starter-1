@@ -12,21 +12,24 @@ const {
   deleteBlog,
   deleteBlogSuccess
 } = createActions({
-  CREATE_BLOG: ({ name } = {}) => ({
-    name
+  CREATE_BLOG: ({ name, description } = {}) => ({
+    name,
+    description
   }),
-  CREATE_BLOG_SUCCESS: ({ _id, userId, name } = {}) => ({
+  CREATE_BLOG_SUCCESS: ({ _id, userId, name, description } = {}) => ({
     _id,
     userId,
-    name
+    name,
+    description
   }),
   GET_BLOGS: ({ cookie } = {}) => ({ cookie }),
   GET_BLOGS_SUCCESS: ({ blogs } = {}) => ({ blogs }),
   GET_SINGLE_BLOG: ({ _id } = {}) => ({ _id }),
   GET_SINGLE_BLOG_SUCCESS: ({ blog } = {}) => ({ blog }),
-  UPDATE_BLOG: ({ _id, name } = {}) => ({
+  UPDATE_BLOG: ({ _id, name, description } = {}) => ({
     _id,
-    name
+    name,
+    description
   }),
   UPDATE_BLOG_SUCCESS: () => ({}),
   DELETE_BLOG: ({ _id } = {}) => ({

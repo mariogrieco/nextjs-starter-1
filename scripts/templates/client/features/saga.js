@@ -4,7 +4,6 @@ module.exports = featureName => {
   const Model = capitalizeFirstLetter(featureName);
 
   return `import { all, takeLatest, call, put } from "redux-saga/effects";
-
 import {
   create${Model},
   create${Model}Success,
@@ -29,16 +28,18 @@ function* create${Model}Saga({ payload }) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name: payload.name
+        name: payload.name,
+        description: payload.description
       })
     });
-    const { _id, userId, name } = yield res.json();
+    const { _id, userId, name, description } = yield res.json();
 
     yield put(
       create${Model}Success({
         _id,
         userId,
-        name
+        name,
+        description
       })
     );
 
@@ -93,7 +94,8 @@ function* update${Model}Saga({ payload }) {
       },
       body: JSON.stringify({
         _id: payload._id,
-        name: payload.name
+        name: payload.name,
+        description: payload.description
       })
     });
     yield put(update${Model}Success());

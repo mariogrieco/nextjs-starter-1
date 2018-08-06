@@ -1,5 +1,4 @@
 const express = require("express");
-
 const Blog = require("../models/blog");
 
 const { getUserId } = require("../utils");
@@ -7,12 +6,13 @@ const { getUserId } = require("../utils");
 const router = express.Router();
 
 router.post("/create", async (req, res) => {
-  const { name } = req.body;
+  const { name, description } = req.body;
   const userId = getUserId(req);
   try {
     const blog = new Blog({
       userId,
-      name
+      name,
+      description
     });
 
     blog.save();
@@ -20,7 +20,8 @@ router.post("/create", async (req, res) => {
     return res.json({
       _id: blog._id,
       userId: blog.userId,
-      name: blog.name
+      name: blog.name,
+      description: blog.description
     });
   } catch (error) {
     return res.status(500).send({ error: "create: something blew up" });
@@ -53,14 +54,15 @@ router.get("/:_id", async (req, res) => {
 });
 
 router.post("/update", async (req, res) => {
-  const { _id, name } = req.body;
+  const { _id, name, description } = req.body;
   try {
     await Blog.findOneAndUpdate(
       {
         _id
       },
       {
-        name
+        name,
+        description
       }
     );
     res.end();

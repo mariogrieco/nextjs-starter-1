@@ -1,5 +1,4 @@
 import { handleActions } from "redux-actions";
-
 import {
   getSingleBlogSuccess,
   getBlogsSuccess,
@@ -14,13 +13,14 @@ const defaultState = {
 
 const reducer = handleActions(
   {
-    [createBlogSuccess]: (state, { payload: { _id, name } }) => {
+    [createBlogSuccess]: (state, { payload: { _id, name, description } }) => {
       return Object.assign({}, state, {
         blogs: [
           ...state.blogs,
           {
             _id,
-            name
+            name,
+            description
           }
         ]
       });

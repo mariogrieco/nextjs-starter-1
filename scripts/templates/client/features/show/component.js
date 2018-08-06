@@ -27,6 +27,9 @@ class Show${Model} extends Component {
           <PageTitle>${Model} Detail</PageTitle>
           <Card>
             <CardHeader>{this.props.${featureName}.name}</CardHeader>
+            <CardBody>
+              <CardText>{this.props.${featureName}.description}</CardText>
+            </CardBody>
           </Card>
           <AlignRight>
             <Button onClick={goto("${featureName}")}>Back</Button>
@@ -37,6 +40,7 @@ class Show${Model} extends Component {
   }
 }
 
-export default Show${Model};  
+export default Show${Model};
+  
 `;
 };

@@ -16,7 +16,7 @@ const reducer = handleActions(
   {
     [createBusinessSuccess]: (
       state,
-      { paylsoad: { _id, name, description } }
+      { payload: { _id, name, description } }
     ) => {
       return Object.assign({}, state, {
         businesses: [
