@@ -16,7 +16,7 @@ const QUESTIONS = [
 
 inquirer.prompt(QUESTIONS).then(answers => {
   const featureName = answers["feature-name"];
-  [createPages, createFeature, createModle, createRoute].map(fn =>
+  [createPages, createFeature, createModel, createRoute].map(fn =>
     fn({ featureName })
   );
 });
@@ -36,11 +36,11 @@ const createPages = ({ featureName }) => {
 const createFeature = ({
   featureName,
   templateDir = `${CURR_DIR}/scripts/templates/client/features`,
-  newProjectDir = `${CURR_DIR}/client/src/features/${featureName}`,
+  newFeatureDir = `${CURR_DIR}/client/src/features/${featureName}`,
   isTopDir = true,
   dirName = undefined
 }) => {
-  mkdirp.sync(newProjectDir);
+  mkdirp.sync(newFeatureDir);
 
   const filesToCreate = fs.readdirSync(templateDir);
 
@@ -51,8 +51,8 @@ const createFeature = ({
     if (stats.isFile()) {
       const contents = require(`${templateDir}/${file}`)(featureName);
       const writePath = isTopDir
-        ? `${newProjectDir}/${featureName}.${file}`
-        : `${newProjectDir}/${dirName}${capitalizeFirstLetter(
+        ? `${newFeatureDir}/${featureName}.${file}`
+        : `${newFeatureDir}/${dirName}${capitalizeFirstLetter(
             featureName
           )}.${file}`;
       fs.writeFileSync(writePath, contents, "utf8");
@@ -61,7 +61,7 @@ const createFeature = ({
       createFeature({
         featureName,
         templateDir: `${templateDir}/${file}`,
-        newProjectDir: `${newProjectDir}/${file}`,
+        newFeatureDir: `${newFeatureDir}/${file}`,
         isTopDir: false,
         dirName: file
       });
@@ -69,7 +69,7 @@ const createFeature = ({
   });
 };
 
-const createModle = ({ featureName }) => {
+const createModel = ({ featureName }) => {
   const contents = require(`${CURR_DIR}/scripts/templates/server/model.js`)(
     featureName
   );

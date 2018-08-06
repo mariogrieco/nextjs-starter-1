@@ -13,10 +13,11 @@ import {
 } from "./blog.action";
 
 import { changeRoute } from "../route/route.action";
+import getURL from "../../lib/getURL";
 
 function* createBlogSaga({ payload }) {
   try {
-    const res = yield call(fetch, "http://localhost:8080/blog/create", {
+    const res = yield call(fetch, getURL("/blog/create"), {
       method: "POST",
       credentials: "include",
       headers: {
@@ -45,7 +46,7 @@ function* createBlogSaga({ payload }) {
 }
 function* getBlogsSaga({ payload }) {
   try {
-    const res = yield call(fetch, "http://localhost:8080/blog/getBlogs", {
+    const res = yield call(fetch, getURL("/blog/getBlogs"), {
       credentials: "include",
       headers: {
         cookie: payload.cookie
@@ -60,7 +61,7 @@ function* getBlogsSaga({ payload }) {
 }
 function* getSingleBlogSaga({ payload }) {
   try {
-    const res = yield call(fetch, `http://localhost:8080/blog/${payload._id}`, {
+    const res = yield call(fetch, getURL(`/blog/${payload._id}`), {
       mode: "cors",
       credentials: "include"
     });
@@ -72,7 +73,7 @@ function* getSingleBlogSaga({ payload }) {
 }
 function* updateBlogSaga({ payload }) {
   try {
-    yield call(fetch, "http://localhost:8080/blog/update", {
+    yield call(fetch, getURL("/blog/update"), {
       method: "POST",
       mode: "cors",
       credentials: "include",
@@ -94,7 +95,7 @@ function* updateBlogSaga({ payload }) {
 }
 function* deleteBlogSaga({ payload }) {
   try {
-    yield call(fetch, "http://localhost:8080/blog/delete", {
+    yield call(fetch, getURL("blog/delete"), {
       method: "POST",
       mode: "cors",
       credentials: "include",
