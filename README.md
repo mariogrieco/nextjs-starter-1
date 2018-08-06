@@ -51,3 +51,9 @@ You should run `yarn build` again any time you make changes to the site.
 - [x] [JWT](https://jwt.io/)
 - [x] [MongoDB](https://www.mongodb.com/)
 - [x] [Docker](https://www.docker.com/)
+
+## How to upload `.env` to server
+
+```
+rsync -avH /home/user/path/to/file -e ssh user@server:/path/to/file
+```
