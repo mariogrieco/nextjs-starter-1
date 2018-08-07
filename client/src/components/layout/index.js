@@ -2,6 +2,7 @@ import React from "react";
 import { Layout, Menu, Icon } from "antd";
 
 import Footer from "./footer";
+import Logo from "./logo";
 
 const { Header, Sider, Content } = Layout;
 
@@ -19,8 +20,14 @@ class BasicLayout extends React.PureComponent {
   render() {
     return (
       <Layout>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-          <div className="logo" />
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={this.state.collapsed}
+          breakpoint="lg"
+          width={256}
+        >
+          <Logo />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1">
               <Icon type="user" />
