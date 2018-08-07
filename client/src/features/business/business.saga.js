@@ -39,7 +39,7 @@ function* createBusinessSaga({ payload }) {
       })
     );
 
-    yield put(changeRoute("/business"));
+    yield put(changeRoute("/"));
   } catch (error) {
     yield console.log("error", error);
   }
@@ -96,7 +96,7 @@ function* updateBusinessSaga({ payload }) {
     });
     yield put(updateBusinessSuccess());
 
-    yield put(changeRoute("/business"));
+    yield put(changeRoute("/"));
   } catch (error) {
     yield console.log("error", error);
   }
