@@ -27,7 +27,7 @@ class ShowBusiness extends Component {
             </CardBody>
           </Card>
           <AlignRight>
-            <Button onClick={goto("business")}>Back</Button>
+            <Button onClick={goto("/")}>Back</Button>
           </AlignRight>
         </Col>
       </Row>

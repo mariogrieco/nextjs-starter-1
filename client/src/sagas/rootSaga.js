@@ -6,10 +6,9 @@ import login from "../features/login/login.saga";
 import user from "../features/user/user.saga";
 import route from "../features/route/route.saga";
 import business from "../features/business/business.saga";
-import blog from "../features/blog/blog.saga";
 
 function* rootSaga() {
-  yield all([signup, signout, login, user, route, business(), blog()]);
+  yield all([signup, signout, login, user, route, business()]);
 }
 
 export default rootSaga;

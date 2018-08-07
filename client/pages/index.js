@@ -1,22 +1,20 @@
 import React from "react";
-import { Jumbotron, Button } from "reactstrap";
 
-export default () => (
-  <div>
-    <Jumbotron>
-      <h1 className="display-3">Hello, world!</h1>
-      <p className="lead">
-        This is a simple hero unit, a simple Jumbotron-style component for
-        calling extra attention to featured content or information.
-      </p>
-      <hr className="my-2" />
-      <p>
-        It uses utility classes for typography and spacing to space content out
-        within the larger container.
-      </p>
-      <p className="lead">
-        <Button color="primary">Learn More</Button>
-      </p>
-    </Jumbotron>
-  </div>
-);
+import Business from "../src/features/business/business.container";
+import { getBusinesses } from "../src/features/business/business.action";
+
+const BusinessPage = () => <Business />;
+
+BusinessPage.getInitialProps = async ctx => {
+  const { store, req, isServer } = ctx;
+
+  if (isServer) {
+    store.dispatch(getBusinesses({ cookie: req.headers.cookie }));
+  } else {
+    store.dispatch(getBusinesses());
+  }
+
+  return {};
+};
+
+export default BusinessPage;
