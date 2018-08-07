@@ -19,8 +19,14 @@ class BasicLayout extends React.PureComponent {
 
   render() {
     return (
-      <Layout>
+      <Layout
+        style={{
+          minHeight: "100vh",
+          overflowX: "hidden"
+        }}
+      >
         <Sider
+          style={{ minHeight: "100vh" }}
           trigger={null}
           collapsible
           collapsed={this.state.collapsed}
