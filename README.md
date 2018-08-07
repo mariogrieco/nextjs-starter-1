@@ -41,13 +41,6 @@ yarn start
 
 You should run `yarn build` again any time you make changes to the site.
 
-## How to upload `.env` to server
+## Contributing
 
-```
-rsync -avH /home/user/path/to/file -e ssh user@server:/path/to/file
-```
-
-## Reference
-
-- [Ant Design](https://ant.design/docs/react/introduce)
-- [Ant Design Pro](https://preview.pro.ant.design/#/dashboard/analysis)
+We welcome all contributions. You can submit any ideas as [pull requests](https://github.com/LIYINGZHEN/nextjs-starter/pulls) or as [GitHub issues](https://github.com/LIYINGZHEN/nextjs-starter/issues). Have a good time! :)
