@@ -1,13 +1,16 @@
 import React, { Fragment } from "react";
-import { Container } from "reactstrap";
+import { Layout } from "antd";
 
-import Navbar from "../../features/navbar/navbar.container";
+const { Header, Footer, Sider, Content } = Layout;
 
-const Layout = ({ children }) => (
+const BasicLayout = ({ children }) => (
   <Fragment>
-    <Navbar />
-    <Container>{children}</Container>
+    <Layout>
+      <Header>Header</Header>
+      <Content>{children}</Content>
+      <Footer>Footer</Footer>
+    </Layout>
   </Fragment>
 );
 
-export default Layout;
+export default BasicLayout;
