@@ -23,26 +23,19 @@ This project exists to make it easier to get started with creating universal app
 
 ## Running locally in development mode
 
-To get started, just clone the repository and run `yarn && yarn dev`:
+To get started, just clone the repository and run `npm install && npm run install-dev && npm dev`:
 
 ```
 git clone https://github.com/LIYINGZHEN/nextjs-starter
-yarn install
-yarn install-dev
-yarn dev
+cd nextjs-starter
+npm install
+npm run install-dev
+npm run dev
 ```
 
-## Building and deploying in production
+Visit: http://localhost:3000
 
-If you wanted to run this site in production, you should install modules then build the site with `yarn build` and run it with `yarn start`:
-
-```
-yarn
-yarn build
-yarn start
-```
-
-You should run `yarn build` again any time you make changes to the site.
+**P.S. Remember to create `/client/.env` and `/server/.env` before starting the project!**
 
 ## Contributing
 
