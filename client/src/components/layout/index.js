@@ -1,13 +1,15 @@
 import React from "react";
 import { Layout, Menu, Icon } from "antd";
 
+import "./style.css";
+
 import Footer from "./footer";
 import Logo from "./logo";
 import Header from "../../features/header/header.container";
 
-const { Sider, Content } = Layout;
+import { goto } from "../../routes";
 
-import "./style.css";
+const { Sider, Content } = Layout;
 
 class BasicLayout extends React.PureComponent {
   state = {
@@ -38,7 +40,7 @@ class BasicLayout extends React.PureComponent {
         >
           <Logo />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
+            <Menu.Item key="1" onClick={goto("/business")}>
               <Icon type="user" />
               <span>Business</span>
             </Menu.Item>

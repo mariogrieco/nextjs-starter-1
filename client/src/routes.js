@@ -3,6 +3,7 @@ const routes = require("next-routes");
 const obj = routes()
   .add("login")
   .add("signup")
+  .add("business")
   .add("business/create")
   .add("business/update", "/business/update/:_id")
   .add("business/show", "/business/show/:_id");

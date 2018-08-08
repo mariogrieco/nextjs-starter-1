@@ -46,7 +46,7 @@ class CreateBusiness extends Component {
             />
           </FormGroup>
           <AlignRight>
-            <Button onClick={goto("/")}>Cancel</Button>
+            <Button onClick={goto("/business")}>Cancel</Button>
             <EmptySpace />
             <Button color="success" onClick={this.handleSubmit}>
               Submit
