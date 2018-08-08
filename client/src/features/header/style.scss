@@ -1,4 +1,22 @@
 .right {
   float: right;
   height: 100%;
+  .account {
+    cursor: pointer;
+    padding: 0 12px;
+    display: inline-block;
+    transition: all 0.3s;
+    height: 100%;
+  }
+  .avatar {
+    margin: 20px 8px 20px 0;
+    color: #1890ff;
+    background: hsla(0, 0%, 100%, 0.85);
+    vertical-align: middle;
+  }
+  .name {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.65);
+  }
 }

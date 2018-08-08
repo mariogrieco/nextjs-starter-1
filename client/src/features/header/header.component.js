@@ -12,7 +12,7 @@ const GlobalHeader = props => {
     <Menu>
       <Menu.Item key="logout" onClick={props.signout}>
         <Icon type="logout" />
-        退出登录
+        Log out
       </Menu.Item>
     </Menu>
   );
@@ -28,12 +28,13 @@ const GlobalHeader = props => {
         <div className="right">
           {props.isLoggedIn ? (
             <Dropdown overlay={menu}>
-              <span>
+              <span className="account">
                 <Avatar
+                  className="avatar"
                   size="small"
                   src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png"
                 />
-                <span>Hello</span>
+                <span className="name">Hello</span>
               </span>
             </Dropdown>
           ) : (
