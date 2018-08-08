@@ -6,6 +6,8 @@ import Logo from "./logo";
 
 const { Header, Sider, Content } = Layout;
 
+import "./style.css";
+
 class BasicLayout extends React.PureComponent {
   state = {
     collapsed: false
