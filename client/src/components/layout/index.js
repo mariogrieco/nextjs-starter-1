@@ -3,8 +3,9 @@ import { Layout, Menu, Icon } from "antd";
 
 import Footer from "./footer";
 import Logo from "./logo";
+import Header from "../../features/header/header.container";
 
-const { Header, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 import "./style.css";
 
@@ -44,13 +45,7 @@ class BasicLayout extends React.PureComponent {
           </Menu>
         </Sider>
         <Layout>
-          <Header style={{ background: "#fff", padding: 0 }}>
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-              onClick={this.toggle}
-            />
-          </Header>
+          <Header toggle={this.toggle} collapsed={this.state.collapsed} />
           <Content
             style={{
               margin: "24px 16px",

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Navbar from "./navbar.component";
+import Header from "./header.component";
 
 import { isLoggedIn } from "../user/user.selector";
 import { signout } from "../signout/signout.action";
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navbar);
+)(Header);
