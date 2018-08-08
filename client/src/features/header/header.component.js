@@ -5,7 +5,7 @@ const { Header } = Layout;
 
 import { goto } from "../../routes";
 
-import "./style.css";
+import "./style.scss";
 
 const GlobalHeader = props => {
   const menu = (

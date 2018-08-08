@@ -7,7 +7,7 @@ import withReduxSaga from "../src/lib/withReduxSaga";
 import Layout from "../src/components/layout";
 import { isLoggedIn } from "../src/features/user/user.action";
 
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/scss/bootstrap.scss";
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
