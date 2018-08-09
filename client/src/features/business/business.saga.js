@@ -48,7 +48,7 @@ function* getBusinessesSaga({ payload }) {
   try {
     const res = yield call(
       fetch,
-      "http://localhost:8080/business/getBusinesses",
+      `http://localhost:8080/business?page=${payload.page}`,
       {
         credentials: "include",
         headers: {
@@ -56,9 +56,9 @@ function* getBusinessesSaga({ payload }) {
         }
       }
     );
-    const { businesses } = yield res.json();
+    const { businesses, total } = yield res.json();
 
-    yield put(getBusinessesSuccess({ businesses }));
+    yield put(getBusinessesSuccess({ businesses, total }));
   } catch (error) {
     yield console.log("error", error);
   }
@@ -103,7 +103,7 @@ function* updateBusinessSaga({ payload }) {
 }
 function* deleteBusinessSaga({ payload }) {
   try {
-    yield call(fetch, "http://localhost:8080/business/delete", {
+    const res = yield call(fetch, "http://localhost:8080/business/delete", {
       method: "POST",
       mode: "cors",
       credentials: "include",
@@ -114,8 +114,12 @@ function* deleteBusinessSaga({ payload }) {
         _id: payload._id
       })
     });
+
+    const { page } = yield res.json();
+
     yield put(deleteBusinessSuccess());
-    yield put(getBusinesses());
+
+    yield put(changeRoute(`/business?page=${page}`));
   } catch (error) {
     yield console.log("error", error);
   }

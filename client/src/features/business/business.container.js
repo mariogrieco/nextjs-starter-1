@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
 
 import Businesses from "./business.component";
-import { getBusinesses } from "./business.selector";
+import { getBusinesses, getTotal } from "./business.selector";
 import { deleteBusiness } from "./business.action";
 
 const mapStateToProps = state => ({
-  businesses: getBusinesses(state)
+  businesses: getBusinesses(state),
+  total: getTotal(state)
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -25,6 +25,7 @@ class BasicLayout extends React.PureComponent {
   render() {
     return (
       <Layout
+        className="a"
         style={{
           minHeight: "100vh",
           overflowX: "hidden"
@@ -50,7 +51,7 @@ class BasicLayout extends React.PureComponent {
           <Header toggle={this.toggle} collapsed={this.state.collapsed} />
           <Content
             style={{
-              margin: "24px 16px",
+              margin: "24px 16px 0px 16px",
               padding: 24,
               background: "#fff",
               minHeight: 280

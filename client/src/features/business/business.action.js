@@ -22,8 +22,11 @@ const {
     name,
     description
   }),
-  GET_BUSINESSES: ({ cookie } = {}) => ({ cookie }),
-  GET_BUSINESSES_SUCCESS: ({ businesses } = {}) => ({ businesses }),
+  GET_BUSINESSES: ({ cookie, page } = {}) => ({ cookie, page }),
+  GET_BUSINESSES_SUCCESS: ({ businesses, total } = {}) => ({
+    businesses,
+    total
+  }),
   GET_SINGLE_BUSINESS: ({ _id } = {}) => ({ _id }),
   GET_SINGLE_BUSINESS_SUCCESS: ({ business } = {}) => ({ business }),
   UPDATE_BUSINESS: ({ _id, name, description } = {}) => ({

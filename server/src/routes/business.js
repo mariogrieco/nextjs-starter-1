@@ -6,6 +6,25 @@ const { getUserId } = require("../utils");
 
 const router = express.Router();
 
+const PAGE_SIZE = 5;
+
+router.get("/", async (req, res) => {
+  const { page } = req.query;
+  const userId = getUserId(req);
+  try {
+    const total = await Business.find().count();
+    const businesses = await Business.find({ userId })
+      .skip(PAGE_SIZE * (page - 1))
+      .limit(PAGE_SIZE);
+    return res.json({
+      businesses,
+      total
+    });
+  } catch (error) {
+    return res.status(500).send({ error: "create: something blew up" });
+  }
+});
+
 router.post("/create", async (req, res) => {
   const { name, description } = req.body;
   const userId = getUserId(req);
@@ -23,18 +42,6 @@ router.post("/create", async (req, res) => {
       userId: business.userId,
       name: business.name,
       description: business.description
-    });
-  } catch (error) {
-    return res.status(500).send({ error: "create: something blew up" });
-  }
-});
-
-router.get("/getBusinesses", async (req, res) => {
-  const userId = getUserId(req);
-  try {
-    const businesses = await Business.find({ userId });
-    return res.json({
-      businesses
     });
   } catch (error) {
     return res.status(500).send({ error: "create: something blew up" });
@@ -78,7 +85,12 @@ router.post("/delete", async (req, res) => {
     await Business.findOneAndDelete({
       _id
     });
-    res.end();
+
+    const total = await Business.find().count();
+
+    return res.json({
+      page: Math.ceil(total / PAGE_SIZE) || 1
+    });
   } catch (error) {
     return res.status(500).send({ error: "create: something blew up" });
   }

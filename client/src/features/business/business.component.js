@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Button } from "antd";
+import { Table, Button, Pagination } from "antd";
 
 import AlignRight from "../../styled/alignRight";
 
@@ -7,6 +7,7 @@ import { goto } from "../../routes";
 
 class Businesses extends Component {
   handleDelete = _id => () => this.props.deleteBusiness({ _id });
+  handleChangePage = page => goto(`/business?page=${page}`)();
 
   render() {
     const columns = [
@@ -50,7 +51,15 @@ class Businesses extends Component {
             Create
           </Button>{" "}
         </AlignRight>
-        <Table columns={columns} dataSource={dataSource} />
+        <Table columns={columns} dataSource={dataSource} pagination={false} />
+        <AlignRight>
+          <Pagination
+            current={Number(this.props.page) || 1}
+            total={this.props.total}
+            pageSize={5}
+            onChange={this.handleChangePage}
+          />
+        </AlignRight>
       </div>
     );
   }

@@ -9,7 +9,8 @@ import { Object } from "core-js";
 
 const defaultState = {
   businesses: [],
-  business: {}
+  business: {},
+  total: 0
 };
 
 const reducer = handleActions(
@@ -29,9 +30,10 @@ const reducer = handleActions(
         ]
       });
     },
-    [getBusinessesSuccess]: (state, { payload: { businesses } }) => {
+    [getBusinessesSuccess]: (state, { payload: { businesses, total } }) => {
       return Object.assign({}, state, {
-        businesses
+        businesses,
+        total
       });
     },
     [getSingleBusinessSuccess]: (state, { payload: { business } }) => {
