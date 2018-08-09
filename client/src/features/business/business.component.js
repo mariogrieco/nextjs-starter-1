@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Button } from "reactstrap";
+import { Table, Button } from "antd";
 
 import AlignRight from "../../styled/alignRight";
 
@@ -9,6 +9,40 @@ class Businesses extends Component {
   handleDelete = _id => () => this.props.deleteBusiness({ _id });
 
   render() {
+    const columns = [
+      {
+        title: "Name",
+        dataIndex: "name",
+        key: "name"
+      },
+      {
+        title: "Description",
+        dataIndex: "description",
+        key: "description"
+      },
+      {
+        title: "Action",
+        key: "action",
+        render: (text, record) => (
+          <span>
+            <Button onClick={goto("business/show", { _id: record.key })}>
+              Detail
+            </Button>{" "}
+            <Button onClick={goto("business/update", { _id: record.key })}>
+              Edit
+            </Button>{" "}
+            <Button onClick={this.handleDelete(record.key)}>Delete</Button>
+          </span>
+        )
+      }
+    ];
+
+    const dataSource = this.props.businesses.map(business => ({
+      key: business._id,
+      name: business.name,
+      description: business.description
+    }));
+
     return (
       <div>
         <AlignRight>
@@ -16,48 +50,7 @@ class Businesses extends Component {
             Create
           </Button>{" "}
         </AlignRight>
-        <Table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.businesses.map((business, index) => (
-              <tr key={business._id}>
-                <th scope="row">{index + 1}</th>
-                <td>{business.name}</td>
-                <td>{business.description}</td>
-                <td>
-                  <Button
-                    color="primary"
-                    size="sm"
-                    onClick={goto("business/show", { _id: business._id })}
-                  >
-                    Detail
-                  </Button>{" "}
-                  <Button
-                    color="secondary"
-                    size="sm"
-                    onClick={goto("business/update", { _id: business._id })}
-                  >
-                    Edit
-                  </Button>{" "}
-                  <Button
-                    color="danger"
-                    size="sm"
-                    onClick={this.handleDelete(business._id)}
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+        <Table columns={columns} dataSource={dataSource} />
       </div>
     );
   }
