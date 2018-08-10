@@ -5,8 +5,10 @@
   "author": "Max Li <ml@maxlivinci.com> (https://maxlivinci.com/)",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./src/index.js",
-    "start": "NODE_ENV=production node ./src/index.js"
+    "build": "tsc",
+    "dev": "ts-node ./src/index.ts",
+    "start": "node ./dist/index.js",
+    "prod": "npm run build && npm run start"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -18,9 +20,14 @@
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "mongo-cursor-pagination": "^7.1.0",
-    "mongoose": "^5.2.6"
+    "mongoose": "^5.2.7",
+    "ts-node": "^7.0.0",
+    "typescript": "^3.0.1"
   },
   "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/bcryptjs": "^2.4.1",
+    "@types/jsonwebtoken": "^7.2.8",
     "nodemon": "^1.18.3"
   }
 }

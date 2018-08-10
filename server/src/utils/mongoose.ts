@@ -32,4 +32,4 @@ mongoose.connection.on("connected", () => console.log("MongoDB is connected"));
 
 const connect = () => connectWithRetry();
 
-module.exports = { connect };
+export default { connect };

@@ -1,8 +1,8 @@
-const express = require("express");
+import * as express from "express";
 
-const Business = require("../models/business");
+import Business from "../models/business";
 
-const { getUserId } = require("../utils");
+import { getUserId } from "../utils";
 
 const router = express.Router();
 

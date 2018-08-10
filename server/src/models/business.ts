@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import * as mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
@@ -9,4 +9,4 @@ const BusinessSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model("Business", BusinessSchema);
+export default mongoose.model("Business", BusinessSchema);

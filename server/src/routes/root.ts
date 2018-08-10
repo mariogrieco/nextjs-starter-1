@@ -1,12 +1,16 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import * as express from "express";
+import * as bcrypt from "bcryptjs";
+import * as jwt from "jsonwebtoken";
 
-const User = require("../models/user");
+import User from "../models/user";
 
 const router = express.Router();
 
-router.post("/signup", async (req, res) => {
+interface MyRequest extends express.Request {
+  session: any;
+}
+
+router.post("/signup", async (req: MyRequest, res) => {
   const { email, password } = req.body;
 
   const existingUser = await User.findOne({ email });
@@ -44,7 +48,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (req: MyRequest, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
@@ -77,17 +81,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/signout", async (req, res) => {
+router.post("/signout", async (req: MyRequest, res) => {
   req.session.userToken = null;
   res.end();
 });
 
-router.post("/isLoggedIn", async (req, res) => {
+router.post("/isLoggedIn", async (req: MyRequest, res) => {
   try {
     const { userToken } = req.session;
     if (userToken) {
-      const { _id, email } = jwt.verify(userToken, process.env.JWT_SECRET);
-      return res.json({ isLoggedIn: true, user: { _id, email } });
+      const decoded = jwt.verify(userToken, process.env.JWT_SECRET);
+      return res.json({
+        isLoggedIn: true,
+        user: { _id: (<any>decoded)._id, email: (<any>decoded).email }
+      });
     } else {
       return res.json({ isLoggedIn: false });
     }
