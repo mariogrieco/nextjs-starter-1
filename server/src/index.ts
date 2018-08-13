@@ -1,4 +1,4 @@
-require("dotenv").config();
+import config from "../config";
 
 import app from "./app";
 
@@ -9,7 +9,7 @@ require("./models");
 
 const routes = require("./routes");
 
-const port = parseInt(process.env.PORT, 10) || 8080;
+const port = parseInt(config.port);
 
 routes(app);
 

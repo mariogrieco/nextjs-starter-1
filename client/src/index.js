@@ -1,11 +1,13 @@
+const config = require("../config");
+
 const express = require("express");
 const next = require("next");
 
 const routes = require("./routes");
 
-const port = parseInt(process.env.PORT, 10) || 3000;
+const port = parseInt(config.port);
 
-const dev = process.env.NODE_ENV !== "production";
+const dev = config.env !== "production";
 const app = next({ dev });
 const handle = routes.getRequestHandler(app);
 

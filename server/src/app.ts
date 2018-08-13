@@ -1,3 +1,5 @@
+import config from "../config";
+
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
@@ -12,11 +14,11 @@ class App {
   }
 
   private config(): void {
-    this.app.use(cors({ credentials: true, origin: process.env.ORIGIN }));
+    this.app.use(cors({ credentials: true, origin: config.cors.origin }));
     this.app.use(
       cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        secret: process.env.COOKIE_SECRET
+        secret: config.session.secret
       })
     );
     // support application/json type post data

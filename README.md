@@ -12,6 +12,7 @@ It includes the following features:
 - Session support with secure HTTP Only cookies.
 - Ant Design (Components for React).
 - SCSS, with live reloading.
+- TypeScript
 
 ## About
 
@@ -34,8 +35,6 @@ npm run dev
 ```
 
 Visit: http://localhost:3000
-
-**P.S. Remember to create `/client/.env` and `/server/.env` before starting the project!**
 
 ## Contributing
 

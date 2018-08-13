@@ -1,3 +1,5 @@
+import config from "../../config";
+
 import * as express from "express";
 import * as bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
@@ -31,7 +33,7 @@ router.post("/signup", async (req: MyRequest, res) => {
           _id: user._id,
           email: user.email
         },
-        process.env.JWT_SECRET,
+        config.jwt.secret,
         {
           expiresIn: "7d"
         }
@@ -65,7 +67,7 @@ router.post("/login", async (req: MyRequest, res) => {
         _id: user._id,
         email: user.email
       },
-      process.env.JWT_SECRET,
+      config.jwt.secret,
       {
         expiresIn: "7d"
       }
@@ -90,7 +92,7 @@ router.post("/isLoggedIn", async (req: MyRequest, res) => {
   try {
     const { userToken } = req.session;
     if (userToken) {
-      const decoded = jwt.verify(userToken, process.env.JWT_SECRET);
+      const decoded = jwt.verify(userToken, config.jwt.secret);
       return res.json({
         isLoggedIn: true,
         user: { _id: (<any>decoded)._id, email: (<any>decoded).email }
