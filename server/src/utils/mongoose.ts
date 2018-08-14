@@ -1,3 +1,5 @@
+import config from "../../config";
+
 const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
@@ -10,10 +12,10 @@ const options = {
 const connectWithRetry = () => {
   // eslint-disable-next-line no-console
   console.log("MongoDB connection with retry");
-  console.log(process.env.MONGODB_URL);
+  console.log("config.mongodb.url", config.mongodb.url);
   mongoose
     .connect(
-      process.env.MONGODB_URL,
+      config.mongodb.url,
       options
     )
     .then(() => {

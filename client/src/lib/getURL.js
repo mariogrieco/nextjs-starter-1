@@ -1,4 +1,6 @@
+const config = require("../../config");
+
 module.exports = path =>
   process.browser
-    ? `${process.env.SERVER_URL}${path}`
-    : `${process.env.DOCKER_URL}${path}`;
+    ? `${config.clientRender.apiUrl}${path}`
+    : `${config.serverRender.apiUrl}${path}`;
