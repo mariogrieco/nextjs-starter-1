@@ -1,61 +1,53 @@
-import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import styled from "styled-components";
+import React, { PureComponent } from "react";
+import { Form, Input, Button } from "antd";
+
+const FormItem = Form.Item;
 
 import { goto } from "../../../routes";
 
-import AlignRight from "../../../styled/alignRight";
 import PageTitle from "../../../styled/pageTitle";
 
-const EmptySpace = styled.div`
-  margin: 0px 10px;
-`;
-
-class CreateBusiness extends Component {
-  state = {
-    name: "",
-    description: ""
-  };
-
-  handleNameChange = e => this.setState({ name: e.target.value });
-  handleDescriptionChange = e => this.setState({ description: e.target.value });
+class CreateBusiness extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.createBusiness(this.state);
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        this.props.createBusiness(values);
+      }
+    });
   };
 
   render() {
+    const { getFieldDecorator } = this.props.form;
+
     return (
       <div>
         <PageTitle>Create A Business</PageTitle>
-        <Form>
-          <FormGroup>
-            <Label>Name</Label>
-            <Input
-              placeholder="Name"
-              value={this.state.name}
-              onChange={this.handleNameChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label>Description</Label>
-            <Input
-              type="textarea"
-              value={this.state.description}
-              onChange={this.handleDescriptionChange}
-            />
-          </FormGroup>
-          <AlignRight>
-            <Button onClick={goto("/business")}>Cancel</Button>
-            <EmptySpace />
-            <Button color="success" onClick={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
+          <FormItem>
+            {getFieldDecorator("name", {
+              rules: [
+                { required: true, message: "Business name cannot be blank!" }
+              ]
+            })(<Input placeholder="Name" />)}
+          </FormItem>
+          <FormItem>
+            {getFieldDecorator("description", {
+              rules: [
+                { required: true, message: "Description cannot be blank!" }
+              ]
+            })(<Input placeholder="Description" />)}
+          </FormItem>
+          <FormItem>
+            <Button onClick={goto("/business")}>Back</Button>{" "}
+            <Button type="primary" htmlType="submit">
               Submit
             </Button>
-          </AlignRight>
+          </FormItem>
         </Form>
       </div>
     );
   }
 }
 
-export default CreateBusiness;
+export default Form.create()(CreateBusiness);

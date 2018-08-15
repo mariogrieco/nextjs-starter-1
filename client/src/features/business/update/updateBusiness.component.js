@@ -1,73 +1,58 @@
-import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import styled from "styled-components";
+import React, { PureComponent } from "react";
+import { Form, Input, Button } from "antd";
+
+const FormItem = Form.Item;
 
 import { goto } from "../../../routes";
 
-import AlignRight from "../../../styled/alignRight";
 import PageTitle from "../../../styled/pageTitle";
 
-const EmptySpace = styled.div`
-  margin: 0px 10px;
-`;
-
-class UpdateBusiness extends Component {
-  state = {
-    _id: this.props.business._id,
-    name: this.props.business.name,
-    description: this.props.business.description
-  };
-
-  static getDerivedStateFromProps(props, state) {
-    if (props.business._id !== state._id) {
-      return {
-        _id: props.business._id,
-        name: props.business.name,
-        description: props.business.description
-      };
-    }
-    return null;
-  }
-
-  handleNameChange = e => this.setState({ name: e.target.value });
-  handleDescriptionChange = e => this.setState({ description: e.target.value });
+class UpdateBusiness extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.updateBusiness(this.state);
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        this.props.updateBusiness({
+          _id: this.props.business._id,
+          ...values
+        });
+      }
+    });
   };
 
   render() {
+    const { getFieldDecorator } = this.props.form;
+
     return (
       <div>
-        <PageTitle>Update Business</PageTitle>
-        <Form>
-          <FormGroup>
-            <Label>Name</Label>
-            <Input
-              placeholder="Name"
-              value={this.state.name || ""}
-              onChange={this.handleNameChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label>Description</Label>
-            <Input
-              type="textarea"
-              value={this.state.description || ""}
-              onChange={this.handleDescriptionChange}
-            />
-          </FormGroup>
-          <AlignRight>
-            <Button onClick={goto("/business")}>Cancel</Button>
-            <EmptySpace />
-            <Button color="success" onClick={this.handleSubmit}>
-              Update
+        <PageTitle>Update A Business</PageTitle>
+        <Form onSubmit={this.handleSubmit}>
+          <FormItem>
+            {getFieldDecorator("name", {
+              initialValue: this.props.business.name,
+              rules: [
+                { required: true, message: "Business name cannot be blank!" }
+              ]
+            })(<Input placeholder="Name" />)}
+          </FormItem>
+          <FormItem>
+            {getFieldDecorator("description", {
+              initialValue: this.props.business.description,
+              rules: [
+                { required: true, message: "Description cannot be blank!" }
+              ]
+            })(<Input placeholder="Description" />)}
+          </FormItem>
+          <FormItem>
+            <Button onClick={goto("/business")}>Back</Button>{" "}
+            <Button type="primary" htmlType="submit">
+              Submit
             </Button>
-          </AlignRight>
+          </FormItem>
         </Form>
       </div>
     );
   }
 }
 
-export default UpdateBusiness;
+export default Form.create()(UpdateBusiness);
