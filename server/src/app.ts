@@ -4,6 +4,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as cookieSession from "cookie-session";
+import * as helmet from "helmet";
 
 class App {
   public app: express.Application;
@@ -14,6 +15,7 @@ class App {
   }
 
   private config(): void {
+    this.app.use(helmet());
     this.app.use(cors({ credentials: true, origin: config.cors.origin }));
     this.app.use(
       cookieSession({

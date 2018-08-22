@@ -2,6 +2,7 @@ const config = require("../config");
 
 const express = require("express");
 const next = require("next");
+const helmet = require("helmet");
 
 const routes = require("./routes");
 
@@ -13,6 +14,7 @@ const handle = routes.getRequestHandler(app);
 
 app.prepare().then(() => {
   const server = express();
+  server.use(helmet());
   server.get("*", (req, res) => handle(req, res));
   server.listen(port, err => {
     if (err) throw err;
